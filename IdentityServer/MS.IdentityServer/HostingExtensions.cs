@@ -1,9 +1,9 @@
+using Serilog;
 using Duende.IdentityServer;
 using MS.IdentityServer.Data;
 using MS.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Serilog;
 
 namespace MS.IdentityServer;
 
@@ -32,10 +32,11 @@ internal static class HostingExtensions
                 options.EmitStaticAudienceClaim = true;
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
+            .AddInMemoryApiResources(Config.ApiResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
             .AddAspNetIdentity<ApplicationUser>();
-        
+
         builder.Services.AddAuthentication()
             .AddGoogle(options =>
             {
@@ -50,11 +51,11 @@ internal static class HostingExtensions
 
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
-    { 
+    {
         app.UseSerilogRequestLogging();
-    
+
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -64,7 +65,7 @@ internal static class HostingExtensions
         app.UseRouting();
         app.UseIdentityServer();
         app.UseAuthorization();
-        
+
         app.MapRazorPages()
             .RequireAuthorization();
 
