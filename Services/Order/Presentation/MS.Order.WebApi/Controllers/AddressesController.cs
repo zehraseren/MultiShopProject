@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MS.Order.Application.Features.CQRS.Queries.AddressQueries;
 using MS.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using MS.Order.Application.Features.CQRS.Commands.AddressCommands;
 
 namespace MS.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressesController : ControllerBase

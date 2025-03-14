@@ -1,10 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MS.Order.Application.Features.Mediator.Queries.OrderingQueries;
 using MS.Order.Application.Features.Mediator.Commands.OrderingCommands;
 
 namespace MS.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderingsController : ControllerBase

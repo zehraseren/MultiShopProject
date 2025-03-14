@@ -13,6 +13,14 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("IdentityServerAccessToken", policy =>
+        {
+            policy.RequireAuthenticatedUser();
+        });
+    });
+
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -28,6 +36,7 @@ try
         .ConfigurePipeline();
 
     app.MapControllers();
+    app.UseAuthorization();
 
     // this seeding is only for the template to bootstrap the DB and users.
     // in production you will likely want a different approach.

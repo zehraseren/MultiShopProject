@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using MS.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MS.IdentityServer.Controller
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase

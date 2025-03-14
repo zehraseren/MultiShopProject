@@ -10,6 +10,7 @@ public static class Config
         new ApiResource("ResourceCatalog"){ Scopes = { "CatalogFullPermission", "CatalogReadPermission" } },
         new ApiResource("ResourceDiscount"){ Scopes = { "DiscountFullPermission"} },
         new ApiResource("ResourceOrder"){ Scopes = { "OrderFullPermission"} },
+        new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
     };
 
     public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
@@ -23,8 +24,9 @@ public static class Config
     {
         new ApiScope("CatalogFullPermission", "Full access to catalog"),
         new ApiScope("CatalogReadPermission", "Read access to catalog"),
-        new ApiScope("DiscountReadPermission", "Full access to catalog"),
-        new ApiScope("OrderReadPermission", "Full access to catalog"),
+        new ApiScope("DiscountFullPermission", "Full access to discount"),
+        new ApiScope("OrderFullPermission", "Full access to order"),
+        new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
 
     public static IEnumerable<Client> Clients => new Client[]
@@ -58,7 +60,16 @@ public static class Config
             ClientName = "MultiShop Admin User",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("multishopadminsecret".Sha256()) },
-            AllowedScopes = { "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission", IdentityServerConstants.LocalApi.ScopeName, IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
+            AllowedScopes = {
+                "CatalogFullPermission",
+                "CatalogReadPermission",
+                "DiscountFullPermission",
+                "OrderFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.StandardScopes.Email,
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+            },
             AccessTokenLifetime = 600
         }
     };

@@ -13,6 +13,7 @@ internal static class HostingExtensions
     {
         builder.Services.AddRazorPages();
 
+        builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -64,6 +65,7 @@ internal static class HostingExtensions
         app.UseStaticFiles();
         app.UseRouting();
         app.UseIdentityServer();
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapRazorPages()
