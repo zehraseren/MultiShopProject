@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_IULayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row px-xl-5">
+
+        <div class="container-fluid">
+            <div class="row px-xl-5">
+
+                @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
+
+                @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial")
+
+            </div>
+        </div>
+    </div>
+</div>
