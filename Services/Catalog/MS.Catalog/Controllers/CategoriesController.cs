@@ -5,7 +5,8 @@ using MS.Catalog.Services.CategoryServices;
 
 namespace MS.Catalog.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
+
+<body class="sidebar-mini">
+    <div class="wrapper">
+
+        @await Component.InvokeAsync("_AdminLayoutHeaderComponentPartial")
+
+        @await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
+        <div class="content-wrapper">
+
+            @await Component.InvokeAsync("_AdminLayoutMainSectionViewbagComponentPartial")
+
+            @RenderBody()
+
+        </div>
+
+        <footer class="main-footer dark-bg">
+            <div class="pull-right hidden-xs"> Version 1.0</div>
+            Copyright &copy; @DateTime.Now.Year | Tüm Hakları Saklıdır.
+        </footer>
+    </div>
+
+    <script src="~/MainDownload-OvioAdmin-html5-template/html/dist/js/jquery.min.js"></script>
+    <script src="~/MainDownload-OvioAdmin-html5-template/html/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/MainDownload-OvioAdmin-html5-template/html/dist/js/ovio.js"></script>
+</body>
+</html>
