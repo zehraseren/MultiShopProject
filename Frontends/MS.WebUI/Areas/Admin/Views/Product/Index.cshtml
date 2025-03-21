@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultProductDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,7 +15,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori Adı</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Fiyatı</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -26,20 +27,20 @@
                                 count++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.CategoryName</td>
-                                    <td><a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger btn-outline">Sil</a></td>
-                                    <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-success btn-outline">Güncelle</a></td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger btn-outline">Sil</a></td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success btn-outline">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <br />
                     <div class="d-flex justify-content-end mt-4 none-border">
-                        <a href="/Admin/Category/CreateCategory/" class="btn btn-primary btn-outline">Yeni Kategori Girişi</a>
+                        <a href="/Admin/Product/CreateProduct/" class="btn btn-primary btn-outline">Yeni Ürün Girişi</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-

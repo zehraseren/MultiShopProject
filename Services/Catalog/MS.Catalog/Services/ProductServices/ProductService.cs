@@ -9,11 +9,13 @@ namespace MS.Catalog.Services.ProductServices
     {
         private readonly IMapper _mapper;
         private readonly IMongoCollection<Product> _productCollection;
+        private readonly IMongoCollection<Category> _categoryCollection;
 
-        public ProductService(IMapper mapper, IMongoCollection<Product> productCollection)
+        public ProductService(IMapper mapper, IMongoCollection<Product> productCollection, IMongoCollection<Category> categoryCollection)
         {
             _mapper = mapper;
             _productCollection = productCollection;
+            _categoryCollection = categoryCollection;
         }
 
         public async Task CreateProductAsync(CreateProductDto cpdto)
@@ -37,6 +39,16 @@ namespace MS.Catalog.Services.ProductServices
         {
             var value = await _productCollection.Find<Product>(x => x.ProductId == id).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDto>(value);
+        }
+
+        public async Task<List<ResultProductWithCategoryDto>> GetProductWithCategoryAsync()
+        {
+            var values = await _productCollection.Find(x => true).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryId == item.CategoryId).FirstAsync();
+            }
+            return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updto)

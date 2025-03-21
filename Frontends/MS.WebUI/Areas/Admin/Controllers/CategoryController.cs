@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
-using System.Threading.Tasks;
 
 namespace MS.WebUI.Areas.Admin.Controllers
 {

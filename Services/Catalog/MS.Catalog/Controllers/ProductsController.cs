@@ -5,7 +5,7 @@ using MS.Catalog.Services.ProductServices;
 
 namespace MS.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -21,6 +21,13 @@ namespace MS.Catalog.Controllers
         public async Task<IActionResult> ProductList()
         {
             var values = await _productService.GetAllProductAsync();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            var values = await _productService.GetProductWithCategoryAsync();
             return Ok(values);
         }
 

@@ -10,15 +10,16 @@
         <div class="col-md-12">
             <div class="chart-box">
                 <h4>Kategori Ekleme Sayfası</h4>
+                <br />
                 <div class="bs-example" data-example-id="bordered-table">
                     <form method="post">
                         <input type="hidden" asp-for="CategoryId" />
                         <label>Kategori Adı</label>
-                        <input type="text" class="form-control" name="CategoryName" />
+                        <input type="text" class="form-control" asp-for="CategoryName" />
                         <br />
                         <div class="d-flex justify-content-end mt-4 none-border">
-                            <button type="submit" class="btn btn-success mr-3">Kategoriyi Güncelle</button>
-                            <a href="/Admin/Category/Index/" class="btn btn-danger mr-0">Vazgeç</a>
+                            <button type="submit" class="btn btn-success btn-outline mr-3">Kategoriyi Güncelle</button>
+                            <a href="/Admin/Category/Index/" class="btn btn-danger btn-outline mr-0">Vazgeç</a>
                         </div>
                     </form>
                 </div>
