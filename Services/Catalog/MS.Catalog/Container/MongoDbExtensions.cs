@@ -2,49 +2,56 @@
 using MS.Catalog.Entities;
 using MS.Catalog.Settings;
 
-namespace MS.Catalog.Container
+namespace MS.Catalog.Container;
+
+public static class MongoDbExtensions
 {
-    public static class MongoDbExtensions
+    public static void AddMongoDb(this IServiceCollection services, IConfiguration configuration)
     {
-        public static void AddMongoDb(this IServiceCollection services, IConfiguration configuration)
+        services.AddSingleton<IMongoClient>(s =>
         {
-            services.AddSingleton<IMongoClient>(s =>
-            {
-                var settings = s.GetRequiredService<IDatabaseSettings>();
-                return new MongoClient(settings.ConnectionString);
-            });
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            return new MongoClient(settings.ConnectionString);
+        });
 
-            services.AddScoped(s =>
-            {
-                var client = s.GetRequiredService<IMongoClient>();
-                var settings = s.GetRequiredService<IDatabaseSettings>();
-                var database = client.GetDatabase(settings.DatabaseName);
-                return database.GetCollection<Category>(settings.CategoryCollectionName);
-            });
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<Category>(settings.CategoryCollectionName);
+        });
 
-            services.AddScoped(s =>
-            {
-                var client = s.GetRequiredService<IMongoClient>();
-                var settings = s.GetRequiredService<IDatabaseSettings>();
-                var database = client.GetDatabase(settings.DatabaseName);
-                return database.GetCollection<Product>(settings.ProductCollectionName);
-            });
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<Product>(settings.ProductCollectionName);
+        });
 
-            services.AddScoped(s =>
-            {
-                var client = s.GetRequiredService<IMongoClient>();
-                var settings = s.GetRequiredService<IDatabaseSettings>();
-                var database = client.GetDatabase(settings.DatabaseName);
-                return database.GetCollection<ProductDetail>(settings.ProductDetailCollectionName);
-            });
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<ProductDetail>(settings.ProductDetailCollectionName);
+        });
 
-            services.AddScoped(s =>
-            {
-                var client = s.GetRequiredService<IMongoClient>();
-                var settings = s.GetRequiredService<IDatabaseSettings>();
-                var database = client.GetDatabase(settings.DatabaseName);
-                return database.GetCollection<ProductImage>(settings.ProductImageCollectionName);
-            });
-        }
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<ProductImage>(settings.ProductImageCollectionName);
+        });
+
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<FeatureSlider>(settings.FeatureSliderCollectionName);
+        });
     }
 }
