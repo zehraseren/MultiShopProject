@@ -3,9 +3,9 @@ using MS.Catalog.Entities;
 using MS.Catalog.Dtos.ProductDtos;
 using MS.Catalog.Dtos.CategoryDtos;
 using MS.Catalog.Dtos.ProductImageDtos;
+using MS.Catalog.Dtos.SpecialOfferDtos;
 using MS.Catalog.Dtos.ProductDetailDtos;
 using MS.Catalog.Dtos.FeatureSliderDtos;
-using MS.Catalog.Dtos.SpeacialOfferDtos;
 
 namespace MS.Catalog.Mapping;
 
@@ -39,5 +39,10 @@ public class GeneralMapping : Profile
         CreateMap<FeatureSlider, CreateFeatureSliderDto>().ReverseMap();
         CreateMap<FeatureSlider, UpdateFeatureSliderDto>().ReverseMap();
         CreateMap<FeatureSlider, GetByIdFeatureSliderDto>().ReverseMap();
+
+        CreateMap<SpecialOffer, ResultSpecialOfferDto>().ReverseMap();
+        CreateMap<SpecialOffer, CreateSpecialOfferDto>().ReverseMap();
+        CreateMap<SpecialOffer, UpdateSpecialOfferDto>().ReverseMap();
+        CreateMap<SpecialOffer, GetByIdSpecialOfferDto>().ReverseMap();
     }
 }
