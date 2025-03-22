@@ -16,9 +16,9 @@ namespace MS.Catalog.Services.SpecialOfferServices
             _specialOfferCollection = SpecialOfferCollection;
         }
 
-        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto ccdto)
+        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto csodto)
         {
-            var value = _mapper.Map<SpecialOffer>(ccdto);
+            var value = _mapper.Map<SpecialOffer>(csodto);
             await _specialOfferCollection.InsertOneAsync(value);
         }
 
@@ -39,10 +39,10 @@ namespace MS.Catalog.Services.SpecialOfferServices
             return _mapper.Map<GetByIdSpecialOfferDto>(value);
         }
 
-        public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto ucdto)
+        public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto usodto)
         {
-            var value = _mapper.Map<SpecialOffer>(ucdto);
-            await _specialOfferCollection.FindOneAndReplaceAsync(x => x.SpecialOfferId == ucdto.SpecialOfferId, value);
+            var value = _mapper.Map<SpecialOffer>(usodto);
+            await _specialOfferCollection.FindOneAndReplaceAsync(x => x.SpecialOfferId == usodto.SpecialOfferId, value);
         }
     }
 }

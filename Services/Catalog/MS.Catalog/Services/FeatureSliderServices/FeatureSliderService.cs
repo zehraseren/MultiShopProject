@@ -16,9 +16,9 @@ public class FeatureSliderService : IFeatureSliderService
         _mapper = mapper;
     }
 
-    public async Task CreateFeatureSliderAsync(CreateFeatureSliderDto ccdto)
+    public async Task CreateFeatureSliderAsync(CreateFeatureSliderDto cfsdto)
     {
-        var value = _mapper.Map<FeatureSlider>(ccdto);
+        var value = _mapper.Map<FeatureSlider>(cfsdto);
         await _featureSliderCollection.InsertOneAsync(value);
     }
 
@@ -49,9 +49,9 @@ public class FeatureSliderService : IFeatureSliderService
         return _mapper.Map<GetByIdFeatureSliderDto>(value);
     }
 
-    public async Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto ucdto)
+    public async Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto ufsdto)
     {
-        var value = _mapper.Map<FeatureSlider>(ucdto);
-        await _featureSliderCollection.FindOneAndReplaceAsync(x => x.FeatureSliderId == ucdto.FeatureSliderId, value);
+        var value = _mapper.Map<FeatureSlider>(ufsdto);
+        await _featureSliderCollection.FindOneAndReplaceAsync(x => x.FeatureSliderId == ufsdto.FeatureSliderId, value);
     }
 }

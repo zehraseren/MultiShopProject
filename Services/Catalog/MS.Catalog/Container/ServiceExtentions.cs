@@ -1,4 +1,5 @@
 ﻿using MS.Catalog.Services.ProductServices;
+using MS.Catalog.Services.FeatureServices;
 using MS.Catalog.Services.CategoryServices;
 using MS.Catalog.Services.ProductImageServices;
 using MS.Catalog.Services.SpecialOfferServices;
@@ -17,5 +18,6 @@ public static class ServiceExtentions
         services.AddScoped<IProductImageService, ProductImageService>();
         services.AddScoped<IFeatureSliderService, FeatureSliderService>();
         services.AddScoped<ISpecialOfferService, SpecialOfferService>();
+        services.AddScoped<IFeatureService, FeatureService>();
     }
 }

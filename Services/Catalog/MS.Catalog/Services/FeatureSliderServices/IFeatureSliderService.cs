@@ -5,8 +5,8 @@ namespace MS.Catalog.Services.FeatureSliderServices;
 public interface IFeatureSliderService
 {
     Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync();
-    Task CreateFeatureSliderAsync(CreateFeatureSliderDto ccdto);
-    Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto ucdto);
+    Task CreateFeatureSliderAsync(CreateFeatureSliderDto cfsdto);
+    Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto ufsdto);
     Task DeleteFeatureSliderAsync(string id);
     Task<GetByIdFeatureSliderDto> GetByIdFeatureSliderAsync(string id);
     Task FeatureSliderChangeStatusTrueAsync(string id);
