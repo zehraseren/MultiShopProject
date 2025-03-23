@@ -1,0 +1,50 @@
+﻿@model List<ResultOfferDiscountDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Teklif Başlığı</th>
+                                <th>Teklif Detayı</th>
+                                <th>Teklif Görsel URL</th>
+                                <th>Teklif Buton Başlığı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Title</td>
+                                    <td>@item.SubTitle</td>
+                                    <td>@item.ImageUrl</td>
+                                    <td>@item.ButtonTitle</td>
+                                    <td><a href="/Admin/OfferDiscount/DeleteOfferDiscount/@item.OfferDiscountId" class="btn btn-danger btn-outline">Sil</a></td>
+                                    <td><a href="/Admin/OfferDiscount/UpdateOfferDiscount/@item.OfferDiscountId" class="btn btn-success btn-outline">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="d-flex justify-content-end mt-4 none-border">
+                        <a href="/Admin/OfferDiscount/CreateOfferDiscount/" class="btn btn-primary btn-outline">Yeni Özel Teklif Girişi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

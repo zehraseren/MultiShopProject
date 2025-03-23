@@ -7,6 +7,7 @@ using MS.Catalog.Dtos.ProductImageDtos;
 using MS.Catalog.Dtos.SpecialOfferDtos;
 using MS.Catalog.Dtos.ProductDetailDtos;
 using MS.Catalog.Dtos.FeatureSliderDtos;
+using MS.Catalog.Dtos.OfferDiscountDtos;
 
 namespace MS.Catalog.Mapping;
 
@@ -50,5 +51,10 @@ public class GeneralMapping : Profile
         CreateMap<Feature, CreateFeatureDto>().ReverseMap();
         CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
         CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
+
+        CreateMap<OfferDiscount, ResultOfferDiscountDto>().ReverseMap();
+        CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
+        CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
+        CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
     }
 }

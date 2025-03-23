@@ -5,6 +5,7 @@ using MS.Catalog.Services.ProductImageServices;
 using MS.Catalog.Services.SpecialOfferServices;
 using MS.Catalog.Services.ProductDetailServices;
 using MS.Catalog.Services.FeatureSliderServices;
+using MS.Catalog.Services.OfferDiscountServices;
 
 namespace MS.Catalog.Container;
 
@@ -19,5 +20,6 @@ public static class ServiceExtentions
         services.AddScoped<IFeatureSliderService, FeatureSliderService>();
         services.AddScoped<ISpecialOfferService, SpecialOfferService>();
         services.AddScoped<IFeatureService, FeatureService>();
+        services.AddScoped<IOfferDiscountService, OfferDiscountService>();
     }
 }
