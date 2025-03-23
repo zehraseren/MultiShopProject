@@ -1,7 +1,9 @@
-﻿<style>
+﻿@model List<ResultBrandDto>
+
+<style>
     .vendor-image {
         width: 320px;
-        height: 224px;
+        height: 150px;
         object-fit: contain;
     }
 </style>
@@ -10,9 +12,12 @@
     <div class="row px-xl-5">
         <div class="col">
             <div class="owl-carousel vendor-carousel">
-                <div class="bg-light p-4">
-                    <img class="vendor-image" src="~/images/vendor-1.jpg" alt="">
-                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="bg-light p-4">
+                        <img class="vendor-image" src="@item.ImageUrl" alt="">
+                    </div>
+                }
             </div>
         </div>
     </div>
