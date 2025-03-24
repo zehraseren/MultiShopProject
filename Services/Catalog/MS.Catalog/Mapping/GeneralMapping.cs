@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MS.Catalog.Entities;
+using MS.Catalog.Dtos.AboutDtos;
 using MS.Catalog.Dtos.BrandDtos;
 using MS.Catalog.Dtos.ProductDtos;
 using MS.Catalog.Dtos.FeatureDtos;
@@ -62,5 +63,10 @@ public class GeneralMapping : Profile
         CreateMap<Brand, CreateBrandDto>().ReverseMap();
         CreateMap<Brand, UpdateBrandDto>().ReverseMap();
         CreateMap<Brand, GetByIdBrandDto>().ReverseMap();
+
+        CreateMap<About, ResultAboutDto>().ReverseMap();
+        CreateMap<About, CreateAboutDto>().ReverseMap();
+        CreateMap<About, UpdateAboutDto>().ReverseMap();
+        CreateMap<About, GetByIdAboutDto>().ReverseMap();
     }
 }

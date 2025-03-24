@@ -85,5 +85,13 @@ public static class MongoDbExtensions
             var database = client.GetDatabase(settings.DatabaseName);
             return database.GetCollection<Brand>(settings.BrandCollectionName);
         });
+
+        services.AddScoped(s =>
+        {
+            var client = s.GetRequiredService<IMongoClient>();
+            var settings = s.GetRequiredService<IDatabaseSettings>();
+            var database = client.GetDatabase(settings.DatabaseName);
+            return database.GetCollection<About>(settings.AboutCollectionName);
+        });
     }
 }

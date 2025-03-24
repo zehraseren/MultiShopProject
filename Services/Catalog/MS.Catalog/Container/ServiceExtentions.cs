@@ -1,4 +1,5 @@
-﻿using MS.Catalog.Services.BrandServices;
+﻿using MS.Catalog.Services.AboutServices;
+using MS.Catalog.Services.BrandServices;
 using MS.Catalog.Services.ProductServices;
 using MS.Catalog.Services.FeatureServices;
 using MS.Catalog.Services.CategoryServices;
@@ -23,5 +24,6 @@ public static class ServiceExtentions
         services.AddScoped<IFeatureService, FeatureService>();
         services.AddScoped<IOfferDiscountService, OfferDiscountService>();
         services.AddScoped<IBrandService, BrandService>();
+        services.AddScoped<IAboutService, AboutService>();
     }
 }
