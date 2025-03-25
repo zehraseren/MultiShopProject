@@ -49,5 +49,13 @@ namespace MS.Catalog.Controllers
             await _productImageService.UpdateProductImageAsync(upidto);
             return Ok("Ürün resmi başarıyla güncellendi.");
         }
+
+        [HttpGet("ProductImagesByProductId")]
+        public async Task<IActionResult> ProductImagesByProductId(string id)
+        {
+            var values = await _productImageService.GetByProductIdProductImagesAsync(id);
+            return Ok(values);
+        }
+
     }
 }

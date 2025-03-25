@@ -1,0 +1,33 @@
+﻿@model UpdateProductDetailDto
+
+@{
+    ViewData["Title"] = "AddOrUpdateProductDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürün Detayları Ekleme | Güncelleme Sayfası</h4>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input type="hidden" asp-for="ProductDetailId" class="form-control" />
+                        <input type="hidden" asp-for="ProductId" class="form-control" />
+                        <label>Açıklama</label>
+                        <textarea rows="5" class="form-control" asp-for="ProductDescription"></textarea>
+                        <br />
+                        <label>Ürün Bilgisi</label>
+                        <textarea rows="5" class="form-control" asp-for="ProductInfo"></textarea>
+                        <br />
+                        <div class="d-flex justify-content-end mt-4 none-border">
+                            <button type="submit" class="btn btn-success btn-outline mr-3">Ekle | Güncelle</button>
+                            <a href="/Admin/Product/ProductListWithCategory/" class="btn btn-danger btn-outline mr-0">Vazgeç</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

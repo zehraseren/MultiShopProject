@@ -85,7 +85,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
             var response = await client.PostAsync("https://localhost:7070/api/Products", content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductListWithCategory");
             }
             return View();
         }
@@ -96,7 +96,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
             var response = await client.DeleteAsync($"https://localhost:7070/api/Products?id={id}");
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductListWithCategory");
             }
             return View();
         }
@@ -137,7 +137,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
             var response = await client.PutAsync("https://localhost:7070/api/Products", content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductListWithCategory");
             }
             return View();
         }

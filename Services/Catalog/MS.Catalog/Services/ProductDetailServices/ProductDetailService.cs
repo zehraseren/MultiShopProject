@@ -39,6 +39,12 @@ namespace MS.Catalog.Services.ProductDetailServices
             return _mapper.Map<GetByIdProductDetailDto>(value);
         }
 
+        public async Task<GetByIdProductDetailDto> GetProductDetailByProductIdAsync(string id)
+        {
+            var value = await _productDetailCollection.Find<ProductDetail>(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductDetailDto>(value);
+        }
+
         public Task UpdateProductDetailAsync(UpdateProductDetailDto upddto)
         {
             var value = _mapper.Map<ProductDetail>(upddto);

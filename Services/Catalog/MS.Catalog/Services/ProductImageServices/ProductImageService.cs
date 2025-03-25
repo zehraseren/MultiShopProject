@@ -39,6 +39,12 @@ namespace MS.Catalog.Services.ProductImageServices
             return _mapper.Map<GetByIdProductImageDto>(values);
         }
 
+        public async Task<GetByIdProductImageDto> GetByProductIdProductImagesAsync(string id)
+        {
+            var values = await _productImageCollection.Find(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductImageDto>(values);
+        }
+
         public async Task UpdateProductImageAsync(UpdateProductImageDto upidto)
         {
             var value = _mapper.Map<ProductImage>(upidto);

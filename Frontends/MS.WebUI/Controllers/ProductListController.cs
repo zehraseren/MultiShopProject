@@ -10,8 +10,9 @@ public class ProductListController : Controller
         return View();
     }
 
-    public IActionResult ProductDetail()
+    public IActionResult ProductDetail(string id)
     {
+        ViewBag.id = id;
         return View();
     }
 }

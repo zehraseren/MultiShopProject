@@ -1,4 +1,4 @@
-﻿namespace MS.Catalog.Dtos.ProductImageDtos;
+﻿namespace MS.UI.DtoLayer.CatalogDtos.ProductImageDtos;
 
 public class UpdateProductImageDto
 {

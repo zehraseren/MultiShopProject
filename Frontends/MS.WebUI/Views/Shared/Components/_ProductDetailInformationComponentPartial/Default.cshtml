@@ -1,22 +1,9 @@
-﻿<div class="tab-pane fade" id="tab-pane-2">
+﻿@model UpdateProductDetailDto
+
+<div class="tab-pane fade" id="tab-pane-2">
     <h4 class="mb-3">Ürün Bilgileri</h4>
-    <p>Ürün Bilgisi</p>
-    <div class="row">
-        <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0">
-                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                </li>
-                <li class="list-group-item px-0">
-                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                </li>
-                <li class="list-group-item px-0">
-                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                </li>
-                <li class="list-group-item px-0">
-                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                </li>
-            </ul>
-        </div>
-    </div>
+    @foreach (var sentence in Model.ProductInfo.Split(new[] { Environment.NewLine }, StringSplitOptions.None))
+    {
+        <p>• @sentence</p>
+    }
 </div>
