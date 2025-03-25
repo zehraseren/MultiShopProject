@@ -9,6 +9,7 @@ namespace MS.Catalog.Services.ProductServices
         Task UpdateProductAsync(UpdateProductDto updto);
         Task DeleteProductAsync(string id);
         Task<GetByIdProductDto> GetByIdProductAsync(string id);
-        Task<List<ResultProductWithCategoryDto>> GetProductWithCategoryAsync();
+        Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryAsync();
+        Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId);
     }
 }
