@@ -1,0 +1,92 @@
+﻿<div class="col-md-6">
+    <h4 class="mb-4">Bir Yorum Ekle</h4>
+    <small>E-posta adresiniz yayınlanmayacaktır. Zorunlu alanlar * ile işaretlenmiştir</small>
+
+    <form id="commentForm">
+        <div class="form-group">
+            <div class="d-flex my-3">
+                <p class="mb-0 mr-2">Puanınız * :</p>
+                <div class="text-primary" id="ratingStars">
+                    <i class="far fa-star star" data-index="1"></i>
+                    <i class="far fa-star star" data-index="2"></i>
+                    <i class="far fa-star star" data-index="3"></i>
+                    <i class="far fa-star star" data-index="4"></i>
+                    <i class="far fa-star star" data-index="5"></i>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="ProductId" value="@ViewBag.pid" />
+
+        <div class="form-group">
+            <label for="name">Adınız Soyadınız *</label>
+            <input type="text" class="form-control" id="name" name="NameSurname">
+        </div>
+        <div class="form-group">
+            <label for="email">Email Adresiniz *</label>
+            <input type="email" class="form-control" id="email" name="Email">
+        </div>
+        <div class="form-group">
+            <label for="message">Mesajınız *</label>
+            <textarea id="message" cols="30" rows="5" class="form-control" name="CommentDetail"></textarea>
+        </div>
+        <div class="form-group mb-0">
+            <input type="submit" value="Yorum Yap" class="btn btn-primary px-3">
+        </div>
+    </form>
+</div>
+
+<script>
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach((star) => {
+        star.addEventListener('click', (e) => {
+            const clickedStarIndex = parseInt(e.target.getAttribute('data-index'));
+            stars.forEach((star, index) => {
+                if (index < clickedStarIndex) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('commentForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const stars = document.querySelectorAll('.star');
+        let rating = 0;
+        stars.forEach((star) => {
+            if (star.classList.contains('fas')) {
+                rating = star.getAttribute('data-index');
+            }
+        });
+
+        const formData= new FormData(this);
+        formData.append('Rating', rating);
+
+        fetch('/ProductList/AddComment', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Yorum eklenirken bir hata oluştu');
+            }
+            return response.json();
+        }).then(data => {
+            if(data === true) {
+                alert('Yorumunuz başarıyla eklendi.');
+                location.reload();
+            } else {
+                alert('Yorum eklenirken bir hata oluştu.');
+            };
+        }).catch(error => {
+            console.error('Error', error);
+        });
+    });
+</script>

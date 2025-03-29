@@ -1,0 +1,47 @@
+﻿@model UpdateCommentDto
+
+@{
+    ViewData["Title"] = "UpdateComment";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yorum Güncelleme Sayfası</h4>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input type="hidden" asp-for="UserCommentId" />
+                        <input type="hidden" asp-for="ProductId" />
+                        <input readonly class="form-control" value="@ViewBag.ProductName" />
+                        <br />
+                        <label>Kullanıcı Adı Soyadı</label>
+                        <input type="text" class="form-control" asp-for="NameSurname" />
+                        <br />
+                        <label>Kullanıcı Görsel</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+                        <label>Email Adresi</label>
+                        <input type="email" class="form-control" asp-for="Email" />
+                        <br />
+                        <label>Kullanıcı Puanı</label>
+                        <input type="number" class="form-control" asp-for="Rating" />
+                        <br />
+                        <label>Yorum Tarihi</label>
+                        <input type="date" class="form-control" asp-for="CreatedDate" />
+                        <br />
+                        <label>Yorum</label>
+                        <textarea rows="3" class="form-control" asp-for="CommentDetail"></textarea>
+                        <br />
+                        <div class="d-flex justify-content-end mt-4 none-border">
+                            <button type="submit" class="btn btn-success btn-outline mr-3">Yorumu Güncelle</button>
+                            <a href="/Admin/Comment/Index/" class="btn btn-danger btn-outline mr-0">Vazgeç</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

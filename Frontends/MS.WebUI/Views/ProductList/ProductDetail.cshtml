@@ -25,7 +25,7 @@
 
                     @await Component.InvokeAsync("_ProductDetailInformationComponentPartial", new { ViewBag.id })
 
-                    @await Component.InvokeAsync("_ProductDetailReviewComponentPartial")
+                    @await Component.InvokeAsync("_ProductDetailReviewComponentPartial", new { ViewBag.id })
 
                 </div>
             </div>
