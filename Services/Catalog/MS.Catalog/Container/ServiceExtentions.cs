@@ -2,6 +2,7 @@
 using MS.Catalog.Services.BrandServices;
 using MS.Catalog.Services.ProductServices;
 using MS.Catalog.Services.FeatureServices;
+using MS.Catalog.Services.ContactServices;
 using MS.Catalog.Services.CategoryServices;
 using MS.Catalog.Services.ProductImageServices;
 using MS.Catalog.Services.SpecialOfferServices;
@@ -25,5 +26,6 @@ public static class ServiceExtentions
         services.AddScoped<IOfferDiscountService, OfferDiscountService>();
         services.AddScoped<IBrandService, BrandService>();
         services.AddScoped<IAboutService, AboutService>();
+        services.AddScoped<IContactService, ContactService>();
     }
 }
