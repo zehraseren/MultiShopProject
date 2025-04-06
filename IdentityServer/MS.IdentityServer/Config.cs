@@ -42,7 +42,7 @@ public static class Config
             ClientName = "MultiShop Visitor User",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("multishopvisitorsecret".Sha256()) },
-            AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission" },
+            AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission" },
             AllowAccessTokensViaBrowser = true
         },
 

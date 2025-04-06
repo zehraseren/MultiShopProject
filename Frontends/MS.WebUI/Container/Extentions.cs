@@ -8,5 +8,6 @@ public static class Extentions
     public static void ContainerDependencies(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<ILoginService, LoginService>();
+        services.AddHttpClient<IIdentityService, IdentityService>();
     }
 }
