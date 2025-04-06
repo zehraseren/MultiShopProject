@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MS.Catalog.Dtos.BrandDtos;
-using Microsoft.AspNetCore.Authorization;
 using MS.Catalog.Services.BrandServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MS.Catalog.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class BrandsController : ControllerBase

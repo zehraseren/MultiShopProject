@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MS.Catalog.Dtos.ContactDtos;
 using Microsoft.AspNetCore.Authorization;
 using MS.Catalog.Services.ContactServices;
-using MS.Catalog.Dtos.ContactDtos;
 
 namespace MS.Catalog.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ContactsController : ControllerBase

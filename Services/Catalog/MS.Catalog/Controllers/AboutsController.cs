@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MS.Catalog.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class AboutsController : ControllerBase

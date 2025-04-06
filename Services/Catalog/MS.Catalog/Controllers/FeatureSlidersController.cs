@@ -5,7 +5,7 @@ using MS.Catalog.Services.FeatureSliderServices;
 
 namespace MS.Catalog.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class FeatureSlidersController : ControllerBase

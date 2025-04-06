@@ -5,7 +5,7 @@ using MS.Catalog.Services.OfferDiscountServices;
 
 namespace MS.Catalog.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class OfferDiscountsController : ControllerBase

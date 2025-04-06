@@ -18,7 +18,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        void CategoryViewbagList()
+        void CategoryViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Kategoriler";
@@ -28,7 +28,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            CategoryViewbagList();
+            CategoryViewBagList();
 
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7070/api/Categories");
@@ -45,7 +45,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateCategory()
         {
-            CategoryViewbagList();
+            CategoryViewBagList();
             return View();
         }
 
@@ -77,7 +77,7 @@ namespace MS.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateCategory(string id)
         {
-            CategoryViewbagList();
+            CategoryViewBagList();
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync($"https://localhost:7070/api/Categories/{id}");
             if (response.IsSuccessStatusCode)
