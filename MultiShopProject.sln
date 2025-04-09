@@ -35,7 +35,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.IdentityServer", "Identi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{93BF26F3-F497-433A-88C9-A8B212519314}"
 	ProjectSection(SolutionItems) = preProject
-		OcelotCodeExample.txt = OcelotCodeExample.txt
 		PortNumbers.txt = PortNumbers.txt
 	EndProjectSection
 EndProject

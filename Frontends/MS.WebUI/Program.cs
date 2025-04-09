@@ -30,6 +30,7 @@ builder.Services.AddHttpClient();
 builder.Services.ContainerDependencies(builder.Configuration);
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
+builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
 var app = builder.Build();
 
