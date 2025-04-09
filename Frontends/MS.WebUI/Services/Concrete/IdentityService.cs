@@ -14,13 +14,69 @@ public class IdentityService : IIdentityService
 {
     private readonly HttpClient _httpClient;
     private readonly ClientSettings _clientSettings;
+    private readonly ServiceApiSettings _serviceApiSettings;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public IdentityService(HttpClient httpClient, IOptions<ClientSettings> clientSettings, IHttpContextAccessor httpContextAccessor)
+    public IdentityService(HttpClient httpClient, IOptions<ClientSettings> clientSettings, IHttpContextAccessor httpContextAccessor, IOptions<ServiceApiSettings> serviceApiSettings)
     {
         _httpClient = httpClient;
-        _clientSettings = clientSettings.Value; // ClientSettings class olduğu için başına IOptions koyulur ve değerlerine Value ile erişilir.
         _httpContextAccessor = httpContextAccessor;
+        _clientSettings = clientSettings.Value; // ClientSettings class olduğu için başına IOptions koyulur ve değerlerine Value ile erişilir.
+        _serviceApiSettings = serviceApiSettings.Value;
+    }
+
+    public async Task<bool> GetRefreshToken()
+    {
+        var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+        {
+            Address = _serviceApiSettings.IdentityServerUrl,
+            Policy = new DiscoveryPolicy
+            {
+                RequireHttps = false,
+            }
+        });
+
+        var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+
+        RefreshTokenRequest refreshTokenRequest = new()
+        {
+            ClientId = _clientSettings.MultiShopManagerClient.ClientId,
+            ClientSecret = _clientSettings.MultiShopManagerClient.ClientSecret,
+            RefreshToken = refreshToken,
+            Address = discoveryEndpoint.TokenEndpoint,
+        };
+
+        var token = await _httpClient.RequestRefreshTokenAsync(refreshTokenRequest);
+
+        var authenticationToken = new List<AuthenticationToken>()
+        {
+            new AuthenticationToken()
+            {
+                Name = OpenIdConnectParameterNames.AccessToken,
+                Value = token.AccessToken
+            },
+
+            new AuthenticationToken()
+            {
+                Name = OpenIdConnectParameterNames.RefreshToken,
+                Value = token.RefreshToken
+            },
+
+            new AuthenticationToken()
+            {
+                Name = OpenIdConnectParameterNames.ExpiresIn,
+                Value = DateTime.Now.AddSeconds(token.ExpiresIn).ToString()
+            }
+        };
+
+        var result = await _httpContextAccessor.HttpContext.AuthenticateAsync();
+
+        var properties = result.Properties;
+        properties.StoreTokens(authenticationToken);
+
+        await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, result.Principal, properties); // Kullanıcı giriş yapmış gibi gösterilir
+
+        return true;
     }
 
     // Kullanıcıyı giriş yapma işlemi
@@ -29,7 +85,7 @@ public class IdentityService : IIdentityService
         // Discovery document almak için istemciye istek gönderilir.
         var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
         {
-            Address = "http://localhost:5001",  // Sunucunun adresi
+            Address = _serviceApiSettings.IdentityServerUrl,  // Sunucunun adresi
             Policy = new DiscoveryPolicy
             {
                 RequireHttps = false, // HTTPS zorunlu değil
@@ -65,7 +121,6 @@ public class IdentityService : IIdentityService
         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
         var authProperties = new AuthenticationProperties();
-
 
         // Token'lar authProperties'e eklenir
         authProperties.StoreTokens(new List<AuthenticationToken>()
