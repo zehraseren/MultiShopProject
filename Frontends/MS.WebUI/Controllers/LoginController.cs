@@ -41,6 +41,6 @@ public class LoginController : Controller
         sidto.Username = "ayse01";
         sidto.Password = "123456aA*";
         await _identityService.SignIn(sidto);
-        return RedirectToAction("Index", "Test");
+        return RedirectToAction("Index", "UserUI");
     }
 }
