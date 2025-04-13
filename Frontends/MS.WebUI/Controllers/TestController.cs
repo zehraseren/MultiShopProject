@@ -3,16 +3,19 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
+using MS.WebUI.Services.CatalogServices.CategoryServices;
 
 namespace MS.WebUI.Controllers;
 
 public class TestController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly ICategoryService _categoryService;
 
-    public TestController(IHttpClientFactory httpClientFactory)
+    public TestController(IHttpClientFactory httpClientFactory, ICategoryService categoryService)
     {
         _httpClientFactory = httpClientFactory;
+        _categoryService = categoryService;
     }
 
     public async Task<IActionResult> Index()
@@ -67,5 +70,11 @@ public class TestController : Controller
     public IActionResult Test1()
     {
         return View();
+    }
+
+    public async Task<IActionResult> Test2()
+    {
+        var result = await _categoryService.GetAllCategoryAsync();
+        return View(result);
     }
 }
