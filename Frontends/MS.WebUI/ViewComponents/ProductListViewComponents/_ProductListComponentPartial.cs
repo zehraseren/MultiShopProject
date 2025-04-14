@@ -1,50 +1,30 @@
-﻿using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using MS.UI.DtoLayer.CatalogDtos.ProductDtos;
-using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
+﻿using Microsoft.AspNetCore.Mvc;
+using MS.WebUI.Services.CatalogServices.ProductServices;
+using MS.WebUI.Services.CatalogServices.CategoryServices;
 
 namespace MS.WebUI.ViewComponents.ProductListViewComponents;
 
 public class _ProductListComponentPartial : ViewComponent
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IProductService _productService;
+    private readonly ICategoryService _categoryService;
 
-    public _ProductListComponentPartial(IHttpClientFactory httpClientFactory)
+    public _ProductListComponentPartial(IProductService productService, ICategoryService categoryService)
     {
-        _httpClientFactory = httpClientFactory;
+        _productService = productService;
+        _categoryService = categoryService;
     }
 
     public async Task<IViewComponentResult> InvokeAsync(string id)
     {
-        var client = _httpClientFactory.CreateClient();
-        if (string.IsNullOrEmpty(id))
-        {
-            var response = await client.GetAsync("https://localhost:7070/api/Products");
-            if (!response.IsSuccessStatusCode)
-                return View();
-
-            var jsonData = await response.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
-            return View(values);
-        }
-
-
-        var categoryResponse = await client.GetAsync($"https://localhost:7070/api/Categories/{id}");
-        if (!categoryResponse.IsSuccessStatusCode)
+        var category = await _categoryService.GetByIdCategoryAsync(id);
+        if (category == null)
             return View();
 
-        var categoryJsonData = await categoryResponse.Content.ReadAsStringAsync();
-        var category = JsonConvert.DeserializeObject<ResultCategoryDto>(categoryJsonData);
-
-        var productResponse = await client.GetAsync($"https://localhost:7070/api/Products/GetProductsWithCategoryByCategoryId/{id}");
-        if (!productResponse.IsSuccessStatusCode)
-            return View();
-
-        var productJsonData = await productResponse.Content.ReadAsStringAsync();
-        var products = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(productJsonData);
+        var products = await _productService.GetProductsWithCategoryByCatetegoryIdAsync(id);
 
         ViewBag.cn = products.Any()
-            ? $"{category.CategoryName} Kategorisindeki Ürünler"
+            ? $"{category.CategoryName} kategorisindeki ürünler"
             : $"{category.CategoryName} kategorisinde ürün yok.";
 
         return View(products);

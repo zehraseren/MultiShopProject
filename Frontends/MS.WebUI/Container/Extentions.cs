@@ -10,6 +10,8 @@ using MS.WebUI.Services.CatalogServices.CategoryServices;
 using MS.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MS.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MS.WebUI.Services.CatalogServices.OfferDiscountServices;
+using MS.WebUI.Services.CatalogServices.ProductImageServices;
+using MS.WebUI.Services.CatalogServices.ProductDetailServices;
 
 namespace MS.WebUI.Container;
 
@@ -72,6 +74,16 @@ public static class Extentions
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
         services.AddHttpClient<IAboutService, AboutService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+        services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+        services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

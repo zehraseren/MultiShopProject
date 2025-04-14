@@ -52,10 +52,10 @@ public class ProductImagesController : ControllerBase
         return Ok("Ürün resmi başarıyla güncellendi.");
     }
 
-    [HttpGet("ProductImagesByProductId")]
-    public async Task<IActionResult> ProductImagesByProductId(string id)
+    [HttpGet("ProductImagesByProductId/{id}")]
+    public async Task<IActionResult> ProductImagesByProductIdAsync(string id)
     {
-        var values = await _productImageService.GetByProductIdProductImagesAsync(id);
+        var values = await _productImageService.GetProductImagesByProductIdAsync(id);
         return Ok(values);
     }
 

@@ -1,29 +1,20 @@
-﻿using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
+﻿using Microsoft.AspNetCore.Mvc;
+using MS.WebUI.Services.CatalogServices.CategoryServices;
 
 namespace MS.WebUI.ViewComponents.DefaultViewComponents;
 
 public class _CategoriesDefaultComponentPartial : ViewComponent
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly ICategoryService _categoryService;
 
-    public _CategoriesDefaultComponentPartial(IHttpClientFactory httpClientFactory)
+    public _CategoriesDefaultComponentPartial(ICategoryService categoryService)
     {
-        _httpClientFactory = httpClientFactory;
+        _categoryService = categoryService;
     }
 
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync("https://localhost:7070/api/Categories");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsondata);
-            return View(values);
-        }
-
-        return View();
+        var result = await _categoryService.GetAllCategoryAsync();
+        return View(result);
     }
 }

@@ -51,14 +51,14 @@ namespace MS.Catalog.Services.ProductServices
             return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
         }
 
-        public async Task<ResultProductWithCategoryDto> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId)
+        public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId)
         {
             var values = await _productCollection.Find(x => x.CategoryId == CategoryId).ToListAsync();
             foreach (var item in values)
             {
                 item.Category = await _categoryCollection.Find<Category>(x => x.CategoryId == item.CategoryId).FirstAsync();
             }
-            return _mapper.Map<ResultProductWithCategoryDto>(values);
+            return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updto)

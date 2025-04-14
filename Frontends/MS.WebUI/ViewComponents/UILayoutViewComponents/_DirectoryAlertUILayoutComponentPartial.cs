@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MS.WebUI.ViewComponents.UILayoutViewComponents
+namespace MS.WebUI.ViewComponents.UILayoutViewComponents;
+
+public class _DirectoryAlertUILayoutComponentPartial : ViewComponent
 {
-    public class _DirectoryAlertUILayoutComponentPartial : ViewComponent
+    public IViewComponentResult Invoke()
     {
-        public IViewComponentResult Invoke()
-        {
-            return View();
-        }
+        return View();
     }
 }

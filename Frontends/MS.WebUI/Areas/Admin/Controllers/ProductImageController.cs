@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using MS.UI.DtoLayer.CatalogDtos.ProductImageDtos;
+using MS.WebUI.Services.CatalogServices.ProductImageServices;
 
 namespace MS.WebUI.Areas.Admin.Controllers;
 
@@ -12,10 +13,12 @@ namespace MS.WebUI.Areas.Admin.Controllers;
 public class ProductImageController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IProductImageService _productImageService;
 
-    public ProductImageController(IHttpClientFactory httpClientFactory)
+    public ProductImageController(IHttpClientFactory httpClientFactory, IProductImageService productImageService)
     {
         _httpClientFactory = httpClientFactory;
+        _productImageService = productImageService;
     }
 
     [HttpGet]

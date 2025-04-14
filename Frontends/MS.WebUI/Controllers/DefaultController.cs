@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MS.WebUI.Controllers
+namespace MS.WebUI.Controllers;
+
+public class DefaultController : Controller
 {
-    public class DefaultController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        ViewBag.directory1 = "Ana Sayfa";
+        ViewBag.directory3 = "Ürün Listesi";
+        return View();
     }
 }

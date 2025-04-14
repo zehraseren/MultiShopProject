@@ -1,28 +1,20 @@
-﻿using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using MS.UI.DtoLayer.CatalogDtos.ProductDtos;
+﻿using Microsoft.AspNetCore.Mvc;
+using MS.WebUI.Services.CatalogServices.ProductServices;
 
 namespace MS.WebUI.ViewComponents.ProductDetailViewComponents;
 
 public class _ProductDetailFeatureComponentPartial : ViewComponent
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IProductService _productService;
 
-    public _ProductDetailFeatureComponentPartial(IHttpClientFactory httpClientFactory)
+    public _ProductDetailFeatureComponentPartial(IProductService productService)
     {
-        _httpClientFactory = httpClientFactory;
+        _productService = productService;
     }
 
     public async Task<IViewComponentResult> InvokeAsync(string id)
     {
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync($"https://localhost:7070/api/Products/{id}");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsonData = await response.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<GetByIdProductDto>(jsonData);
-            return View(value);
-        }
-        return View();
+        var result = await _productService.GetByIdProductAsync(id);
+        return View(result);
     }
 }
