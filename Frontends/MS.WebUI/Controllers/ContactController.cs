@@ -1,17 +1,16 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MS.UI.DtoLayer.CatalogDtos.ContactDtos;
+using MS.WebUI.Services.CatalogServices.ContactServices;
 
 namespace MS.WebUI.Controllers;
 
 public class ContactController : Controller
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IContactService _contactService;
 
-    public ContactController(IHttpClientFactory httpClientFactory)
+    public ContactController(IContactService contactService)
     {
-        _httpClientFactory = httpClientFactory;
+        _contactService = contactService;
     }
 
     void ContactViewbagList()
@@ -31,14 +30,9 @@ public class ContactController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(CreateContactDto ccdto)
     {
-        var client = _httpClientFactory.CreateClient();
-        var data = JsonConvert.SerializeObject(ccdto);
-        StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-        var response = await client.PostAsync("https://localhost:7070/api/Contacts", content);
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index", "Default");
-        }
-        return View();
+        ccdto.IsRead = false;
+        ccdto.SendDate = DateTime.Now;
+        await _contactService.CreateContactAsync(ccdto);
+        return RedirectToAction("Index", "Default");
     }
 }

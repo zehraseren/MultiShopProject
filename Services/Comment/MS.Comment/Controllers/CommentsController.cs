@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MS.Comment.Controllers;
 
-[AllowAnonymous]
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class CommentsController : ControllerBase
@@ -56,7 +56,7 @@ public class CommentsController : ControllerBase
         return Ok("Yorum güncellendi.");
     }
 
-    [HttpGet("CommmentListByProductId")]
+    [HttpGet("CommmentListByProductId/")]
     public IActionResult CommmentListByProductId(string productId)
     {
         var values = _context.UserComments.Where(x => x.ProductId == productId).ToList();

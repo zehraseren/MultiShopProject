@@ -1,29 +1,20 @@
-﻿using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using MS.UI.DtoLayer.CommentDtos;
+﻿using Microsoft.AspNetCore.Mvc;
+using MS.WebUI.Services.CommentServices;
 
 namespace MS.WebUI.ViewComponents.ProductDetailViewComponents;
 
 public class _ProductDetailReviewComponentPartial : ViewComponent
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly ICommentService _commentService;
 
-    public _ProductDetailReviewComponentPartial(IHttpClientFactory httpClientFactory)
+    public _ProductDetailReviewComponentPartial(ICommentService commentService)
     {
-        _httpClientFactory = httpClientFactory;
+        _commentService = commentService;
     }
 
     public async Task<IViewComponentResult> InvokeAsync(string id)
     {
-        ViewBag.pid = id;
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync($"https://localhost:7075/api/Comments/CommmentListByProductId?productId={id}");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsondata);
-            return View(values);
-        }
-        return View();
+        var result = await _commentService.CommentListByProductId(id);
+        return View(result);
     }
 }

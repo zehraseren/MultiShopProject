@@ -2,6 +2,7 @@
 using MS.WebUI.Settings;
 using MS.WebUI.Services.Concrete;
 using MS.WebUI.Services.Interfaces;
+using MS.WebUI.Services.CommentServices;
 using MS.WebUI.Services.CatalogServices.BrandServices;
 using MS.WebUI.Services.CatalogServices.AboutServices;
 using MS.WebUI.Services.CatalogServices.ProductServices;
@@ -12,6 +13,7 @@ using MS.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MS.WebUI.Services.CatalogServices.OfferDiscountServices;
 using MS.WebUI.Services.CatalogServices.ProductImageServices;
 using MS.WebUI.Services.CatalogServices.ProductDetailServices;
+using MS.WebUI.Services.CatalogServices.ContactServices;
 
 namespace MS.WebUI.Container;
 
@@ -84,6 +86,16 @@ public static class Extentions
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
         services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+        services.AddHttpClient<ICommentService, CommentService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Comment.Path}/");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+        services.AddHttpClient<IContactService, ContactService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

@@ -24,7 +24,7 @@ public class _ProductListComponentPartial : ViewComponent
         var products = await _productService.GetProductsWithCategoryByCatetegoryIdAsync(id);
 
         ViewBag.cn = products.Any()
-            ? $"{category.CategoryName} kategorisindeki ürünler"
+            ? $"{category.CategoryName} Kategorisindeki Ürünler"
             : $"{category.CategoryName} kategorisinde ürün yok.";
 
         return View(products);
