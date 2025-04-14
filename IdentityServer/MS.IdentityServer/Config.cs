@@ -50,7 +50,14 @@ public static class Config
             ClientName = "MultiShop Visitor User",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets = { new Secret("multishopvisitorsecret".Sha256()) },
-            AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "ImageFullPermission",  "OcelotFullPermission" },
+            AllowedScopes = {
+                "CatalogReadPermission",
+                "CatalogFullPermission",
+                "CommentFullPermission",
+                "ImageFullPermission",
+                "OcelotFullPermission",
+             IdentityServerConstants.LocalApi.ScopeName
+            },
             AllowAccessTokensViaBrowser = true
         },
 

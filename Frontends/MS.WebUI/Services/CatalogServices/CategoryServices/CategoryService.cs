@@ -1,4 +1,5 @@
-﻿using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
+﻿using Newtonsoft.Json;
+using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
 
 namespace MS.WebUI.Services.CatalogServices.CategoryServices;
 
@@ -24,7 +25,8 @@ public class CategoryService : ICategoryService
     public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
     {
         var response = await _httpClient.GetAsync("categories");
-        var result = await response.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
+        var data = await response.Content.ReadAsStringAsync();
+        var result = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(data);
         return result;
     }
 
@@ -33,7 +35,6 @@ public class CategoryService : ICategoryService
         var response = await _httpClient.GetAsync($"categories/{id}");
         var result = await response.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
         return result;
-
     }
 
     public async Task UpdateCategoryAsync(UpdateCategoryDto ucdto)

@@ -1,106 +1,74 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
 using MS.UI.DtoLayer.CatalogDtos.CategoryDtos;
+using MS.WebUI.Services.CatalogServices.CategoryServices;
 
-namespace MS.WebUI.Areas.Admin.Controllers
+namespace MS.WebUI.Areas.Admin.Controllers;
+
+[Area("Admin")]
+[Route("Admin/[controller]/[action]/{id?}")]
+public class CategoryController : Controller
 {
-    [Area("Admin")]
-    [AllowAnonymous]
-    [Route("Admin/[controller]/[action]/{id?}")]
-    public class CategoryController : Controller
+    private readonly ICategoryService _categoryService;
+    private readonly IHttpClientFactory _httpClientFactory;
+
+    public CategoryController(IHttpClientFactory httpClientFactory, ICategoryService categoryService)
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        _categoryService = categoryService;
+        _httpClientFactory = httpClientFactory;
+    }
 
-        public CategoryController(IHttpClientFactory httpClientFactory)
+    void CategoryViewBagList()
+    {
+        ViewBag.v1 = "Ana Sayfa";
+        ViewBag.v2 = "Kategoriler";
+        ViewBag.v3 = "Kategori Listesi";
+        ViewBag.v0 = "Kategori İşlemleri";
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        CategoryViewBagList();
+        var result = await _categoryService.GetAllCategoryAsync();
+        return View(result);
+    }
+
+    [HttpGet]
+    public IActionResult CreateCategory()
+    {
+        CategoryViewBagList();
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateCategory(CreateCategoryDto ccdto)
+    {
+        await _categoryService.CreateCategoryAsync(ccdto);
+        return RedirectToAction("Index");
+    }
+
+    public async Task<IActionResult> DeleteCategory(string id)
+    {
+        await _categoryService.DeleteCategoryAsync(id);
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> UpdateCategory(string id)
+    {
+        CategoryViewBagList();
+        var result = await _categoryService.GetByIdCategoryAsync(id);
+        var ucdto = new UpdateCategoryDto
         {
-            _httpClientFactory = httpClientFactory;
-        }
+            CategoryId = result.CategoryId,
+            CategoryName = result.CategoryName,
+        };
+        return View(ucdto);
+    }
 
-        void CategoryViewBagList()
-        {
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
-            ViewBag.v0 = "Kategori İşlemleri";
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            CategoryViewBagList();
-
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7070/api/Categories");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsondata = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsondata);
-                return View(values);
-            }
-
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult CreateCategory()
-        {
-            CategoryViewBagList();
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryDto ccdto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsondata = JsonConvert.SerializeObject(ccdto);
-            StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7070/api/Categories", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-
-        public async Task<IActionResult> DeleteCategory(string id)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7070/api/Categories?id={id}");
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> UpdateCategory(string id)
-        {
-            CategoryViewBagList();
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7070/api/Categories/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsondata = await response.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsondata);
-                return View(value);
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto ucdto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var jsondata = JsonConvert.SerializeObject(ucdto);
-            StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7070/api/Categories", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+    [HttpPost]
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryDto ucdto)
+    {
+        await _categoryService.UpdateCategoryAsync(ucdto);
+        return RedirectToAction("Index");
     }
 }

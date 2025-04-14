@@ -1,20 +1,19 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
 using MS.UI.DtoLayer.CatalogDtos.AboutDtos;
+using MS.WebUI.Services.CatalogServices.AboutServices;
 
 namespace MS.WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[AllowAnonymous]
 [Route("Admin/[controller]/[action]/{id?}")]
 public class AboutController : Controller
 {
+    private readonly IAboutService _aboutService;
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public AboutController(IHttpClientFactory httpClientFactory)
+    public AboutController(IHttpClientFactory httpClientFactory, IAboutService aboutService)
     {
+        _aboutService = aboutService;
         _httpClientFactory = httpClientFactory;
     }
 
@@ -29,16 +28,8 @@ public class AboutController : Controller
     public async Task<IActionResult> Index()
     {
         AboutViewbagList();
-
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync("https://localhost:7070/api/Abouts");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsondata);
-            return View(values);
-        }
-        return View();
+        var result = await _aboutService.GetAllAboutAsync();
+        return View(result);
     }
 
     [HttpGet]
@@ -51,54 +42,36 @@ public class AboutController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateAbout(CreateAboutDto cadto)
     {
-        var client = _httpClientFactory.CreateClient();
-        var jsondata = JsonConvert.SerializeObject(cadto);
-        StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-        var response = await client.PostAsync("https://localhost:7070/api/Abouts", content);
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _aboutService.CreateAboutAsync(cadto);
+        return RedirectToAction("Index");
     }
 
     public async Task<IActionResult> DeleteAbout(string id)
     {
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.DeleteAsync($"https://localhost:7070/api/Abouts?id={id}");
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _aboutService.DeleteAboutAsync(id);
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
     public async Task<IActionResult> UpdateAbout(string id)
     {
         AboutViewbagList();
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync($"https://localhost:7070/api/Abouts/{id}");
-        if (response.IsSuccessStatusCode)
+        var result = await _aboutService.GetByIdAboutAsync(id);
+        var uadto = new UpdateAboutDto
         {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<UpdateAboutDto>(jsondata);
-            return View(value);
-        }
-        return View();
+            AboutId = result.AboutId,
+            Description = result.Description,
+            Address = result.Address,
+            Email = result.Email,
+            Phone = result.Phone
+        };
+        return View(uadto);
     }
 
     [HttpPost]
     public async Task<IActionResult> UpdateAbout(UpdateAboutDto uadto)
     {
-        var client = _httpClientFactory.CreateClient();
-        var jsondata = JsonConvert.SerializeObject(uadto);
-        StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-        var response = await client.PutAsync("https://localhost:7070/api/Abouts", content);
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _aboutService.UpdateAboutAsync(uadto);
+        return RedirectToAction("Index");
     }
 }

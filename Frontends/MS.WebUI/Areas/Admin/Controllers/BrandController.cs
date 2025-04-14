@@ -1,21 +1,20 @@
-﻿using System.Text;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
 using MS.UI.DtoLayer.CatalogDtos.BrandDtos;
+using MS.WebUI.Services.CatalogServices.BrandServices;
 
 namespace MS.WebUI.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[AllowAnonymous]
 [Route("Admin/[controller]/[action]/{id?}")]
 public class BrandController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IBrandService _brandService;
 
-    public BrandController(IHttpClientFactory httpClientFactory)
+    public BrandController(IHttpClientFactory httpClientFactory, IBrandService brandService)
     {
         _httpClientFactory = httpClientFactory;
+        _brandService = brandService;
     }
 
     void BrandViewBagList()
@@ -29,17 +28,8 @@ public class BrandController : Controller
     public async Task<IActionResult> Index()
     {
         BrandViewBagList();
-
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync("https://localhost:7070/api/Brands");
-        if (response.IsSuccessStatusCode)
-        {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultBrandDto>>(jsondata);
-            return View(values);
-        }
-
-        return View();
+        var result = await _brandService.GetAllBrandAsync();
+        return View(result);
     }
 
     [HttpGet]
@@ -52,54 +42,34 @@ public class BrandController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateBrand(CreateBrandDto cbdto)
     {
-        var client = _httpClientFactory.CreateClient();
-        var jsondata = JsonConvert.SerializeObject(cbdto);
-        StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-        var response = await client.PostAsync("https://localhost:7070/api/Brands", content);
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _brandService.CreateBrandAsync(cbdto);
+        return RedirectToAction("Index");
     }
 
     public async Task<IActionResult> DeleteBrand(string id)
     {
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.DeleteAsync($"https://localhost:7070/api/Brands?id={id}");
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _brandService.DeleteBrandAsync(id);
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
     public async Task<IActionResult> UpdateBrand(string id)
     {
         BrandViewBagList();
-        var client = _httpClientFactory.CreateClient();
-        var response = await client.GetAsync($"https://localhost:7070/api/Brands/{id}");
-        if (response.IsSuccessStatusCode)
+        var result = await _brandService.GetByIdBrandAsync(id);
+        var ubdto = new UpdateBrandDto
         {
-            var jsondata = await response.Content.ReadAsStringAsync();
-            var value = JsonConvert.DeserializeObject<UpdateBrandDto>(jsondata);
-            return View(value);
-        }
-        return View();
+            BrandId = result.BrandId,
+            BrandName = result.BrandName,
+            ImageUrl = result.ImageUrl
+        };
+        return View(ubdto);
     }
 
     [HttpPost]
     public async Task<IActionResult> UpdateBrand(UpdateBrandDto ubdto)
     {
-        var client = _httpClientFactory.CreateClient();
-        var jsondata = JsonConvert.SerializeObject(ubdto);
-        StringContent content = new StringContent(jsondata, Encoding.UTF8, "application/json");
-        var response = await client.PutAsync("https://localhost:7070/api/Brands", content);
-        if (response.IsSuccessStatusCode)
-        {
-            return RedirectToAction("Index");
-        }
-        return View();
+        await _brandService.UpdateBrandAsync(ubdto);
+        return RedirectToAction("Index");
     }
 }
