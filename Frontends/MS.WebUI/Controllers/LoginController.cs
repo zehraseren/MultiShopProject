@@ -23,6 +23,6 @@ public class LoginController : Controller
     public async Task<IActionResult> Index(SignInDto sidto)
     {
         await _identityService.SignIn(sidto);
-        return View("Index", "UserUI");
+        return RedirectToAction("Index", "User");
     }
 }

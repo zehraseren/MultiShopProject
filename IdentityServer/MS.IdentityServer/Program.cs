@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using MS.IdentityServer;
+using Duende.IdentityServer;
 using MS.IdentityServer.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,10 +14,13 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.AddLocalApiAuthentication();
+
     builder.Services.AddAuthorization(options =>
     {
         options.AddPolicy("IdentityServerAccessToken", policy =>
         {
+            policy.AddAuthenticationSchemes(IdentityServerConstants.LocalApi.AuthenticationScheme);
             policy.RequireAuthenticatedUser();
         });
     });

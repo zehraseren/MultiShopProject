@@ -3,11 +3,11 @@ using MS.WebUI.Services.Interfaces;
 
 namespace MS.WebUI.Controllers;
 
-public class UserUIController : Controller
+public class UserController : Controller
 {
     private readonly IUserService _userService;
 
-    public UserUIController(IUserService userService)
+    public UserController(IUserService userService)
     {
         _userService = userService;
     }

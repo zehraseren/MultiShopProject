@@ -61,6 +61,7 @@ public class CategoryController : Controller
         {
             CategoryId = result.CategoryId,
             CategoryName = result.CategoryName,
+            ImageUrl = result.ImageUrl
         };
         return View(ucdto);
     }

@@ -37,6 +37,11 @@ public class ClientCredentialTokenService : IClientCredentialTokenService
             }
         });
 
+        if (discoveryEndpoint.IsError)
+        {
+            throw new Exception("Discovery endpoint alınamadı");
+        }
+
         var clientCredentialTokenRequest = new ClientCredentialsTokenRequest
         {
             ClientId = _clientSettings.MultiShopVisitorClient.ClientId,
