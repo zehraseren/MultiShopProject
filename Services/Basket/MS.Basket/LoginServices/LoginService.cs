@@ -1,4 +1,6 @@
-﻿namespace MS.Basket.LoginServices
+﻿using System.Security.Claims;
+
+namespace MS.Basket.LoginServices
 {
     public class LoginService : ILoginService
     {
@@ -9,6 +11,6 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public string GetUserId => _httpContextAccessor.HttpContext.User.FindFirst("sub").Value;
+        public string GetUserId => _httpContextAccessor.HttpContext?.User.FindFirstValue("sub");
     }
 }

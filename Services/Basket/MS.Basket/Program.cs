@@ -28,6 +28,15 @@ builder.Services.AddSingleton<RedisService>(sp =>
     var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
     var redis = new RedisService(redisSettings.Host, redisSettings.Port);
     redis.Connect();
+    try
+    {
+        redis.Connect();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Redis baðlantý hatasý: {ex.Message}");
+        throw;
+    }
     return redis;
 });
 

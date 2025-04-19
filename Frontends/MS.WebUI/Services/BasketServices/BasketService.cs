@@ -14,6 +14,8 @@ public class BasketService : IBasketService
     public async Task<BasketTotalDto> GetBasket()
     {
         var response = await _httpClient.GetAsync("baskets");
+        if (!response.IsSuccessStatusCode)
+            return null;
         var result = await response.Content.ReadFromJsonAsync<BasketTotalDto>();
         return result;
     }

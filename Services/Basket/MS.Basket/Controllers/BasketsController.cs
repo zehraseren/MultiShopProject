@@ -22,8 +22,12 @@ public class BasketsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetBasketDetail()
     {
-        var user = User.Claims;
-        var values = await _basketService.GetBasket(_loginService.GetUserId);
+        var userId = _loginService.GetUserId;
+        var values = await _basketService.GetBasket(userId);
+
+        if (values == null)
+            return NotFound("Sepet bulunamadı"); // 👈 404 dönsün
+
         return Ok(values);
     }
 
