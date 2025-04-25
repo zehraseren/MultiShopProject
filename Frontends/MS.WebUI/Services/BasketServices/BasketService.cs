@@ -1,4 +1,5 @@
 ﻿using MS.UI.DtoLayer.BasketDtos;
+using Newtonsoft.Json;
 
 namespace MS.WebUI.Services.BasketServices;
 
@@ -27,7 +28,8 @@ public class BasketService : IBasketService
 
     public async Task SaveBasket(BasketTotalDto btdto)
     {
-        await _httpClient.PostAsJsonAsync<BasketTotalDto>("baskets", btdto);
+        var json = JsonConvert.SerializeObject(btdto);
+        await _httpClient.PostAsJsonAsync("baskets", btdto);
     }
 
     public async Task AddBasketItem(BasketItemDto bidto)

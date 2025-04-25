@@ -8,7 +8,12 @@
 
         @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
 
-        @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial")
+        @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial", new
+            {
+                code = ViewBag.code,
+                coupon = ViewBag.coupon,
+                totalWithCoupon = ViewBag.totalWithCoupon
+            })
 
     </div>
 </div>

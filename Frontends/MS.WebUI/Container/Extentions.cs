@@ -4,6 +4,7 @@ using MS.WebUI.Services.Concrete;
 using MS.WebUI.Services.Interfaces;
 using MS.WebUI.Services.BasketServices;
 using MS.WebUI.Services.CommentServices;
+using MS.WebUI.Services.DiscountServices;
 using MS.WebUI.Services.CatalogServices.BrandServices;
 using MS.WebUI.Services.CatalogServices.AboutServices;
 using MS.WebUI.Services.CatalogServices.ProductServices;
@@ -11,9 +12,9 @@ using MS.WebUI.Services.CatalogServices.FeatureServices;
 using MS.WebUI.Services.CatalogServices.ContactServices;
 using MS.WebUI.Services.CatalogServices.CategoryServices;
 using MS.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MS.WebUI.Services.CatalogServices.ProductImageServices;
 using MS.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MS.WebUI.Services.CatalogServices.OfferDiscountServices;
-using MS.WebUI.Services.CatalogServices.ProductImageServices;
 using MS.WebUI.Services.CatalogServices.ProductDetailServices;
 
 namespace MS.WebUI.Container;
@@ -104,6 +105,11 @@ public static class Extentions
         services.AddHttpClient<IBasketService, BasketService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Basket.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Discount.Path}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
     }
 }

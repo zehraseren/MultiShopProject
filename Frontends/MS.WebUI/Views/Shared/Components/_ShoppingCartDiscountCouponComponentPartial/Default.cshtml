@@ -1,29 +1,57 @@
-﻿<div class="col-lg-4">
-    <form class="mb-30" method="post">
+﻿@{
+    bool isDiscountCouponApplied = ViewBag.Coupon != null;
+}
+
+<div class="col-lg-4">
+    <form class="mb-30" method="post" asp-controller="ShoppingCart" asp-action="ApplyCoupon">
         <div class="input-group">
-            <input type="text" class="form-control border-0 p-4" placeholder="Kupon Kodunuz">
+            <input type="text" class="form-control border-0 p-4" placeholder="Kupon Kodu" name="code">
             <div class="input-group-append">
                 <button class="btn btn-primary">Kupon Uygula</button>
             </div>
         </div>
     </form>
-    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Sipariş Özeti</span></h5>
+    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">SİPARİŞ ÖZETİ</span></h5>
     <div class="bg-light p-30 mb-5">
         <div class="border-bottom pb-2">
-            <div class="d-flex justify-content-between mb-3">
+            <div class="d-flex justify-content-between mb-1">
                 <h6>Toplam Ürün Fiyatı</h6>
-                <h6>₺</h6>
+                <h6>@ViewBag.total.ToString("N2") ₺</h6>
             </div>
-            <div class="d-flex justify-content-between">
-                <h6 class="font-weight-medium">KDV</h6>
-                <h6 class="font-weight-medium">₺</h6>
+            <div class="d-flex justify-content-between mb-1">
+                <h6 class="font-weight-medium">KDV Tutarı</h6>
+                <h6 class="font-weight-medium">@ViewBag.tax.ToString("N2") ₺</h6>
             </div>
+            @if (isDiscountCouponApplied)
+            {
+                <div class="d-flex justify-content-between mb-1">
+                    <h6 class="font-weight-medium">İndirim Oranı</h6>
+                    <h6 class="font-weight-medium">@ViewBag.Coupon%</h6>
+                </div>
+            }
+            @if (isDiscountCouponApplied)
+            {
+                <div class="d-flex justify-content-between mb-1">
+                    <h6 class="font-weight-medium">Toplam Tutar</h6>
+                    <h6 class="font-weight-medium">@ViewBag.totalWithTax.ToString("N2") ₺</h6>
+                </div>
+            }
         </div>
         <div class="pt-2">
-            <div class="d-flex justify-content-between mt-2">
-                <h5>Toplam</h5>
-                <h5>₺</h5>
-            </div>
+            @if (isDiscountCouponApplied)
+            {
+                <div class="d-flex justify-content-between mt-2">
+                    <h5>İndirimli Tutar</h5>
+                    <h5>@ViewBag.totalWithCoupon.ToString("N2")₺</h5>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-between mb-1">
+                    <h6 class="font-weight-medium">Toplam Tutar</h6>
+                    <h6 class="font-weight-medium">@ViewBag.totalWithTax.ToString("N2") ₺</h6>
+                </div>
+            }
             <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Ödeme Adımına Geç</button>
         </div>
     </div>

@@ -75,6 +75,7 @@ public static class Config
                 "CommentFullPermission",
                 "PaymentFullPermission",
                 "ImageFullPermission",
+                "DiscountFullPermission",
                 "OcelotFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
