@@ -1,14 +1,13 @@
 {
   "profiles": {
-    "http": {
+    "MS.Order": {
       "commandName": "Project",
+      "dotnetRunMessages": false,
+      "applicationUrl": "http://localhost:7071",
       "launchUrl": "swagger",
-      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:7071"
+      }
     }
   }
 }
