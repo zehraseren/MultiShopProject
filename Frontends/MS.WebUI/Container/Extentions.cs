@@ -2,6 +2,7 @@
 using MS.WebUI.Settings;
 using MS.WebUI.Services.Concrete;
 using MS.WebUI.Services.Interfaces;
+using MS.WebUI.Services.OrderServices;
 using MS.WebUI.Services.BasketServices;
 using MS.WebUI.Services.CommentServices;
 using MS.WebUI.Services.DiscountServices;
@@ -110,6 +111,11 @@ public static class Extentions
         services.AddHttpClient<IDiscountService, DiscountService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Discount.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Order.Path}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
     }
 }
