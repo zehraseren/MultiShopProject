@@ -1,10 +1,11 @@
 {
   "profiles": {
-    "MS.Order": {
+    "MS.Discount": {
       "commandName": "Project",
       "dotnetRunMessages": false,
       "applicationUrl": "http://localhost:7071",
       "launchUrl": "swagger",
+      "launchBrowser": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
