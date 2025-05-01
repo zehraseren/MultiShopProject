@@ -5,6 +5,7 @@ using MS.WebUI.Services.Interfaces;
 using MS.WebUI.Services.OrderServices;
 using MS.WebUI.Services.BasketServices;
 using MS.WebUI.Services.CommentServices;
+using MS.WebUI.Services.MessageServices;
 using MS.WebUI.Services.DiscountServices;
 using MS.WebUI.Services.CatalogServices.BrandServices;
 using MS.WebUI.Services.CatalogServices.AboutServices;
@@ -12,12 +13,12 @@ using MS.WebUI.Services.CatalogServices.ProductServices;
 using MS.WebUI.Services.CatalogServices.FeatureServices;
 using MS.WebUI.Services.CatalogServices.ContactServices;
 using MS.WebUI.Services.CatalogServices.CategoryServices;
+using MS.WebUI.Services.OrderServices.OrderOrderingServices;
 using MS.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MS.WebUI.Services.CatalogServices.ProductImageServices;
 using MS.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MS.WebUI.Services.CatalogServices.OfferDiscountServices;
 using MS.WebUI.Services.CatalogServices.ProductDetailServices;
-using MS.WebUI.Services.OrderServices.OrderOrderingServices;
 
 namespace MS.WebUI.Container;
 
@@ -122,6 +123,11 @@ public static class Extentions
         services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Order.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<IMessageService, MessageService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
     }
 }

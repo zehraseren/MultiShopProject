@@ -15,6 +15,7 @@ public static class Config
         new ApiResource("ResourceComment"){ Scopes = { "CommentFullPermission"} },
         new ApiResource("ResourcePayment"){ Scopes = { "PaymentFullPermission"} },
         new ApiResource("ResourceImage"){ Scopes = { "ImageFullPermission" } },
+        new ApiResource("ResourceMessage"){ Scopes = { "MessageFullPermission" } },
         new ApiResource("ResourceOcelot"){ Scopes = { "OcelotFullPermission"} },
         new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
     };
@@ -37,6 +38,7 @@ public static class Config
         new ApiScope("CommentFullPermission", "Full access to comment"),
         new ApiScope("PaymentFullPermission", "Full access to payment"),
         new ApiScope("ImageFullPermission", "Full access to image"),
+        new ApiScope("MessageFullPermission", "Full access to message"),
         new ApiScope("OcelotFullPermission", "Full access to ocelot"),
         new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
@@ -77,6 +79,7 @@ public static class Config
                 "ImageFullPermission",
                 "DiscountFullPermission",
                 "OrderFullPermission",
+                "MessageFullPermission",
                 "OcelotFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,

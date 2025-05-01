@@ -12,6 +12,7 @@ public class ServiceApiSettings
     public ServiceApi Comment { get; set; }
     public ServiceApi Payment { get; set; }
     public ServiceApi Image { get; set; }
+    public ServiceApi Message { get; set; }
 }
 
 public class ServiceApi
