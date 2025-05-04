@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MS.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using static Duende.IdentityServer.IdentityServerConstants;
@@ -32,5 +33,12 @@ public class UsersController : ControllerBase
             Name = user.Name,
             Surname = user.Surname
         });
+    }
+
+    [HttpGet("GetAllUserList")]
+    public async Task<IActionResult> GetAllUserList()
+    {
+        var users = await _userManager.Users.ToListAsync();
+        return Ok(users);
     }
 }

@@ -19,6 +19,7 @@ using MS.WebUI.Services.CatalogServices.ProductImageServices;
 using MS.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MS.WebUI.Services.CatalogServices.OfferDiscountServices;
 using MS.WebUI.Services.CatalogServices.ProductDetailServices;
+using MS.WebUI.Services.UserIdentityServices;
 
 namespace MS.WebUI.Container;
 
@@ -128,6 +129,12 @@ public static class Extentions
         services.AddHttpClient<IMessageService, MessageService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+        services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.IdentityServerUrl}");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
     }
 }
