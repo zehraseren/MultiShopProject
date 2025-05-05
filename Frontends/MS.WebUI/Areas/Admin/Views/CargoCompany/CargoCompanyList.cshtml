@@ -1,0 +1,44 @@
+﻿@model List<ResultCargoCompanyDto>
+
+@{
+    ViewData["Title"] = "CargoCompanyList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kargo Şirketi Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.CargoCompanyName</td>
+                                    <td><a href="/Admin/CargoCompany/DeleteCargoCompany/@item.CargoCompanyId" class="btn btn-danger btn-outline">Sil</a></td>
+                                    <td><a href="/Admin/CargoCompany/UpdateCargoCompany/@item.CargoCompanyId" class="btn btn-success btn-outline">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="d-flex justify-content-end mt-4 none-border">
+                        <a href="/Admin/CargoCompany/CreateCargoCompany/" class="btn btn-primary btn-outline">Yeni Kargo Şirketi Girişi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
