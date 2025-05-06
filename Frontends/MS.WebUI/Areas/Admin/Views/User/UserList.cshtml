@@ -18,6 +18,7 @@
                                 <th>Ad Soyad</th>
                                 <th>Kullanıcı Adı</th>
                                 <th>Email</th>
+                                <th>Adres Detayı</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,7 @@
                                     <td>@item.Name @item.Surname</td>
                                     <td>@item.UserName</td>
                                     <td>@item.Email</td>
+                                    <td><a href="/Admin/User/UserAddressInfo/@item.Id" class="btn btn-primary btn-outline">Adres Detayı</a></td>
                                 </tr>
                             }
                         </tbody>

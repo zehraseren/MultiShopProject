@@ -1,0 +1,78 @@
+﻿@model GetCargoCustomerByIdDto
+
+@{
+    ViewData["Title"] = "UserAddressInfo";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<style>
+    .table-striped tbody tr:nth-child(1) {
+        background-color: #d1ecf1;
+    }
+
+    .table-striped tbody tr:nth-child(2) {
+        background-color: #ffeeba;
+    }
+
+    .table-striped tbody tr:nth-child(3) {
+        background-color: #f5c6cb;
+    }
+
+    .table-striped tbody tr:nth-child(4) {
+        background-color: #c3e6cb;
+    }
+
+    .table-striped tbody tr:nth-child(5) {
+        background-color: #b8daff;
+    }
+
+    .table-striped tbody tr:nth-child(6) {
+        background-color: #d6d8db;
+    }
+
+    .table-striped tbody tr:nth-child(7) {
+        background-color: #e2e3e5;
+    }
+</style>
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3>Kullanıcı Adres ve İletişim Bilgisi</h3>
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Kullanıcı ID</th>
+                            <td>@Model.CargoCustomerId</td>
+                        </tr>
+                        <tr>
+                            <th>Kullanıcı Adı Soyadı</th>
+                            <td>@Model.Name @Model.Surname</td>
+                        </tr>
+                        <tr>
+                            <th>Email Adresi</th>
+                            <td>@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <th>Telefon</th>
+                            <td>@Model.Phone</td>
+                        </tr>
+                        <tr>
+                            <th>İl / İlçe</th>
+                            <td>@Model.City / @Model.District</td>
+                        </tr>
+                        <tr>
+                            <th>Adres</th>
+                            <td>@Model.Address</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end mt-4 none-border">
+                <a href="/Admin/User/UserList/" class="btn btn-primary btn-outline mr-0">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+</div>

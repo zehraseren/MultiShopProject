@@ -75,4 +75,11 @@ public class CargoCustomersController : ControllerBase
         _customerService.TUpdate(cargoCustomer);
         return Ok("Kargo müşteri başarıyla güncellendi.");
     }
+
+    [HttpGet("GetCargoCustomerByID")]
+    public IActionResult GetCargoCustomerById(string id)
+    {
+        var result = _customerService.TGetCargoCustomerById(id);
+        return Ok(result);
+    }
 }
