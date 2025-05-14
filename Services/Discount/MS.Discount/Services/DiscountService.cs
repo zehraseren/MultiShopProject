@@ -98,4 +98,14 @@ public class DiscountService : IDiscountService
             return result;
         }
     }
+
+    public Task<int> GetTotalDiscountCouponCountAsync()
+    {
+        string query = "select Count(*) From Coupons";
+        using (var connection = _context.CreateConnection())
+        {
+            var result = connection.QueryFirstOrDefault<int>(query);
+            return Task.FromResult(result);
+        }
+    }
 }

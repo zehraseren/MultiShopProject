@@ -65,4 +65,11 @@ public class DiscountsController : ControllerBase
         var value = _discountService.GetDiscountCouponRateAsync(code);
         return Ok(value);
     }
+
+    [HttpGet("GetTotalDiscountCouponCount")]
+    public async Task<IActionResult> GetTotalDiscountCouponCount()
+    {
+        var value = await _discountService.GetTotalDiscountCouponCountAsync();
+        return Ok(value);
+    }
 }

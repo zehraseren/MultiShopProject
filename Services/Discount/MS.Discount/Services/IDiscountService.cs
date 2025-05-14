@@ -11,4 +11,5 @@ public interface IDiscountService
     Task<GetByIdDiscountCouponDto> GetByIdDiscountCouponAsync(int id);
     Task<ResultDiscountCouponDto> GetCodeDetailByCodeAsync(string code);
     int GetDiscountCouponRateAsync(string code);
+    Task<int> GetTotalDiscountCouponCountAsync();
 }
