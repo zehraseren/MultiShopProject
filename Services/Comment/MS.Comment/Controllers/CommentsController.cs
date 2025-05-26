@@ -63,8 +63,8 @@ public class CommentsController : ControllerBase
         return Ok(values);
     }
 
-    [HttpGet("GetActiveCommmentCount")]
-    public IActionResult GetActiveCommmentCount()
+    [HttpGet("GetActiveCommentCount")]
+    public IActionResult GetActiveCommentCount()
     {
         var values = _context.UserComments.Where(x => x.Status == true).Count();
         return Ok(values);

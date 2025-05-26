@@ -1,8 +1,8 @@
 using System.Reflection;
-using MS.Message.Services;
 using MS.Message.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MS.Message.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

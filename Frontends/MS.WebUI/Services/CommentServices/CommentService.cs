@@ -44,8 +44,30 @@ public class CommentService : ICommentService
         var result = await response.Content.ReadFromJsonAsync<GetByIdCommentDto>();
         return result;
     }
+
     public async Task UpdateCommentAsync(UpdateCommentDto ucdto)
     {
         await _httpClient.PostAsJsonAsync("comments", ucdto);
+    }
+
+    public async Task<int> GetActiveCommentCount()
+    {
+        var response = await _httpClient.GetAsync("Comments/GetActiveCommentCount");
+        var result = await response.Content.ReadFromJsonAsync<int>();
+        return result;
+    }
+
+    public async Task<int> GetPassiveCommentCount()
+    {
+        var response = await _httpClient.GetAsync("Comments/GetPassiveCommentCount");
+        var result = await response.Content.ReadFromJsonAsync<int>();
+        return result;
+    }
+
+    public async Task<int> GetTotalCommentCount()
+    {
+        var response = await _httpClient.GetAsync("Comments/GetTotalCommentCount");
+        var result = await response.Content.ReadFromJsonAsync<int>();
+        return result;
     }
 }

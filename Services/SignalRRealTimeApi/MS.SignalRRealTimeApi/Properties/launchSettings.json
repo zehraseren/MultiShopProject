@@ -1,11 +1,11 @@
 ﻿{
   "profiles": {
-    "MS.Comment": {
+    "MS.SignalRRealTimeApi": {
       "commandName": "Project",
-      "dotnetRunMessages": false,
+      "dotnetRunMessages": true,
       "launchBrowser": false,
+      "applicationUrl": "https://localhost:5206",
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:7075",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

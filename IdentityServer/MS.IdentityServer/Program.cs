@@ -3,6 +3,7 @@ using MS.IdentityServer;
 using Duende.IdentityServer;
 using MS.IdentityServer.Data;
 using Microsoft.EntityFrameworkCore;
+using MS.IdentityServer.Services;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -34,6 +35,8 @@ try
         .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
         .Enrich.FromLogContext()
         .ReadFrom.Configuration(ctx.Configuration));
+
+    builder.Services.AddScoped<IUserService, UserService>();
 
     var app = builder
         .ConfigureServices()

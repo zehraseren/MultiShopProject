@@ -9,4 +9,5 @@ public class ResultInboxMessageDto
     public string Content { get; set; }
     public bool IsRead { get; set; }
     public DateTime MessageDate { get; set; }
+    public string SenderFullName { get; set; }
 }

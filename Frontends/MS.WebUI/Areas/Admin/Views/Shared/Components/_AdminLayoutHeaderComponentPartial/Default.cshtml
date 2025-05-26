@@ -1,4 +1,27 @@
-﻿<header class="main-header dark-bg">
+﻿@model AdminHeaderViewModel
+
+<header class="main-header dark-bg">
+    <style>
+        .messages-menu {
+            position: relative;
+        }
+
+            .messages-menu .notify {
+                position: absolute;
+                top: 5px;
+                right: 3px;
+            }
+
+        .notifications-menu {
+            position: relative;
+        }
+
+            .notifications-menu .notify {
+                position: absolute;
+                top: 5px;
+                right: 1px;
+            }
+    </style>
 
     <!-- Logo -->
     <a href="../index.html" class="logo dark-bg">
@@ -28,65 +51,48 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-envelope"></i>
-                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <i class="icon-envelope">@ViewBag.messageCount</i>
+                        <div class="notify"> <span class="heartbit"></span><span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">4 yeni mesajınız var</li>
+                        <li class="header">@(ViewBag.messageCount > 0 ? $"Şu an {ViewBag.messageCount} yeni mesajınız var" : "Yeni mesaj yok")</li>
                         <li>
                             <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/img1.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Florence Douglas</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 2 dakika</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/img2.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Douglas Smith</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 15 dakika</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/img3.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Lorence Deo</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 35 dakika</small></p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left"><img src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/img1.jpg" class="img-circle" alt="User Image"></div>
-                                        <h4>Florence Douglas</h4>
-                                        <p>Lorem ipsum dolor sit amet.</p>
-                                        <p><small><i class="fa fa-clock-o"></i> 2 dakika</small></p>
-                                    </a>
-                                </li>
+                                @foreach (var message in Model.InboxMessages)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left"><img src="~/MainDownload-OvioAdmin-html5-template/html/dist/img/img1.jpg" class="img-circle" alt="User Image"></div>
+                                            <h4>@message.SenderFullName</h4>
+                                            <p>@(message.Content.Length > 25 ? message.Content.Substring(0, 25) + "..." : message.Content)</p>
+                                            <p><small><i class="fa fa-clock-o"></i> @message.MessageDate</small></p>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Bildirimleri Okudu Olarak İşaretle</a></li>
+                        <li class="footer"><a href="#">Bildirimleri Okundu Olarak İşaretle</a></li>
                     </ul>
                 </li>
                 <!-- messages-menu -->
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-megaphone"></i>
-                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <i class="icon-megaphone">@ViewBag.commentCount</i>
+                        <div class="notify"> <span class="heartbit"></span><span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Bildirimler</li>
+                        <li class="header">@(ViewBag.commentCount > 0 ? $"Şu an {ViewBag.commentCount} yeni yorumunuz var" : "Yeni yorum yok")</li>
                         <li>
                             <ul class="menu">
-                                <li><a href="#"><i class="icon-lightbulb"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-map-pin blue"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-refresh orange"></i> Lorem ipsum dolor sit amet </a> </li>
-                                <li><a href="#"><i class="icon-map-pin blue"></i> Lorem ipsum dolor sit amet </a> </li>
+                                @foreach (var comment in Model.Comments)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-lightbulb"></i> @(comment.CommentDetail.Length > 25 ? comment.CommentDetail.Substring(0, 25) + "..." : comment.CommentDetail)
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </li>
                         <li class="footer"><a href="#">Hepsini Gör</a></li>

@@ -16,4 +16,12 @@ public class UserService : IUserService
     {
         return await _httpClient.GetFromJsonAsync<UserDetailViewModel>("/api/users/getuser");
     }
+
+    public async Task<List<UserDetailViewModel>> GetUsersByIdsAsync(List<string> userIds)
+    {
+        var response = await _httpClient.PostAsJsonAsync("api/users/GetUserByIds", userIds);
+        response.EnsureSuccessStatusCode();
+        var users = await response.Content.ReadFromJsonAsync<List<UserDetailViewModel>>();
+        return users ?? new List<UserDetailViewModel>();
+    }
 }

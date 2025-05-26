@@ -1,9 +1,8 @@
-﻿using MS.WebUI.Models;
+﻿using MS.IdentityServer.Models;
 
-namespace MS.WebUI.Services.Interfaces;
+namespace MS.IdentityServer.Services;
 
 public interface IUserService
 {
-    Task<UserDetailViewModel> GetUserInfo();
     Task<List<UserDetailViewModel>> GetUsersByIdsAsync(List<string> userIds);
 }

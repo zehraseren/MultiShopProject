@@ -10,4 +10,7 @@ public interface ICommentService
     Task DeleteCommentAsync(string id);
     Task<GetByIdCommentDto> GetByIdCommentAsync(string id);
     Task<List<ResultCommentDto>> CommentListByProductId(string id);
+    Task<int> GetTotalCommentCount();
+    Task<int> GetActiveCommentCount();
+    Task<int> GetPassiveCommentCount();
 }

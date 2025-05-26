@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MS.IdentityServer.Models;
+using MS.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,10 +15,12 @@ namespace MS.IdentityServer.Controller;
 public class UsersController : ControllerBase
 {
     private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserService _userService;
 
-    public UsersController(UserManager<ApplicationUser> userManager)
+    public UsersController(UserManager<ApplicationUser> userManager, IUserService userService)
     {
         _userManager = userManager;
+        _userService = userService;
     }
 
     [HttpGet("GetUser")]
@@ -39,6 +42,13 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetAllUserList()
     {
         var users = await _userManager.Users.ToListAsync();
+        return Ok(users);
+    }
+
+    [HttpPost("GetUserByIds")]
+    public async Task<IActionResult> GetUserByIds([FromBody] List<string> userIds)
+    {
+        var users = await _userService.GetUsersByIdsAsync(userIds);
         return Ok(users);
     }
 }

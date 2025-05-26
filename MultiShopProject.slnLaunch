@@ -1,0 +1,55 @@
+[
+  {
+    "Name": "Ya hak!",
+    "Projects": [
+      {
+        "Path": "Services\\Catalog\\MS.Catalog\\MS.Catalog.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "IdentityServer\\MS.IdentityServer\\MS.IdentityServer.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ApiGateway\\MS.OcelotGateway\\MS.OcelotGateway.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Frontends\\MS.WebUI\\MS.WebUI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Comment\\MS.Comment\\MS.Comment.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Basket\\MS.Basket\\MS.Basket.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Discount\\MS.Discount\\MS.Discount.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Order\\Presentation\\MS.Order.WebApi\\MS.Order.WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\MS.Payment\\MS.Payment.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Message\\MS.Messages\\MS.Message.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Cargo\\MS.Cargo.WepApi\\MS.Cargo.WepApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\SignalRRealTimeApi\\MS.SignalRRealTimeApi\\MS.SignalRRealTimeApi.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

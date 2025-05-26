@@ -65,7 +65,7 @@ public class UserMessagesController : ControllerBase
     }
 
     [HttpGet("GetTotalMessageCountByReceiverId")]
-    public async Task<IActionResult> GetTotalMessageCountByReceiverI(string id)
+    public async Task<IActionResult> GetTotalMessageCountByReceiverId(string id)
     {
         var result = await _userMessageService.GetTotalMessageCountByReceiverId(id);
         return Ok(result);
