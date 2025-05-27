@@ -90,6 +90,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQMessage", "RabbitMQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.RabbitMQMessageApi", "RabbitMQMessage\MS.RabbitMQMessageApi\MS.RabbitMQMessageApi.csproj", "{4AD98247-9821-4807-B93F-48933D082C91}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{D28338A5-AE96-4BD1-A2F8-6676568E7D73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.RapidApiWebUI", "RapidApi\MS.RapidApiWebUI\MS.RapidApiWebUI.csproj", "{5D048967-C45A-4CB5-9C9D-42A1B14AD63E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +192,10 @@ Global
 		{4AD98247-9821-4807-B93F-48933D082C91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AD98247-9821-4807-B93F-48933D082C91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AD98247-9821-4807-B93F-48933D082C91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D048967-C45A-4CB5-9C9D-42A1B14AD63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D048967-C45A-4CB5-9C9D-42A1B14AD63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D048967-C45A-4CB5-9C9D-42A1B14AD63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D048967-C45A-4CB5-9C9D-42A1B14AD63E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -230,6 +238,7 @@ Global
 		{1AFC3A30-17AE-4359-8E4A-4B4F5CACBC1F} = {676A30C8-B036-4D02-8C58-73B854FC8A05}
 		{4BB14A90-7D1E-4B85-9E49-9928B1BBCE9C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{4AD98247-9821-4807-B93F-48933D082C91} = {4BB14A90-7D1E-4B85-9E49-9928B1BBCE9C}
+		{5D048967-C45A-4CB5-9C9D-42A1B14AD63E} = {D28338A5-AE96-4BD1-A2F8-6676568E7D73}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F4BA6A7-F1C0-49C4-87A1-7D3E64D8CDEF}
