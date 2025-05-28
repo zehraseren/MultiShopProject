@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <br />
+    <h3 class="alert alert-success">Dolar Alış: @ViewBag.usdExchangeRate ₺</h3>
+    <h3 class="alert alert-warning">Dolar Satış: @ViewBag.usdPreviousClose ₺</h3>
+    <br />
+    <br />
+    <h3 class="alert alert-info">Euro Alış: @ViewBag.eurExchangeRate ₺</h3>
+    <h3 class="alert alert-danger">Euro Satış: @ViewBag.eurPreviousClose ₺</h3>
+</div>
