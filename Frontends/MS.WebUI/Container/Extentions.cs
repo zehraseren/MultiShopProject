@@ -47,11 +47,40 @@ public static class Extentions
         // HttpClient Configurations
         var value = configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+        // Identity Microservice
         services.AddHttpClient<IUserService, UserService>(opt =>
         {
             opt.BaseAddress = new Uri(value.IdentityServerUrl);
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+        services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.IdentityServerUrl}");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<IUserStatisticService, UserStatisticService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.IdentityServerUrl}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        // Basket Microservice
+        services.AddHttpClient<IBasketService, BasketService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Basket.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        // Cargo Microservice
+        services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Cargo.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Cargo.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        // Catalog Microservice
         services.AddHttpClient<ICategoryService, CategoryService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
@@ -102,26 +131,45 @@ public static class Extentions
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
-        services.AddHttpClient<ICommentService, CommentService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Comment.Path}/");
-        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
         services.AddHttpClient<IContactService, ContactService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
         }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
-        services.AddHttpClient<IBasketService, BasketService>(opt =>
+        services.AddHttpClient<ICatalogStatisticService, CatalogStatisticService>(opt =>
         {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Basket.Path}/");
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+        // Comment Microservice
+        services.AddHttpClient<ICommentService, CommentService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Comment.Path}/");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+        // Discount Microservice
         services.AddHttpClient<IDiscountService, DiscountService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Discount.Path}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+        services.AddHttpClient<IDiscountStatisticService, DiscountStatisticService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Discount.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        // Message Microservice
+        services.AddHttpClient<IMessageService, MessageService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        services.AddHttpClient<IMessageStatisticService, MessageStatisticService>(opt =>
+        {
+            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+        // Order Microservice
         services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Order.Path}/");
@@ -130,46 +178,6 @@ public static class Extentions
         services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt =>
         {
             opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Order.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<IMessageService, MessageService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.IdentityServerUrl}");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Cargo.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Cargo.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<ICatalogStatisticService, CatalogStatisticService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Catalog.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<IMessageStatisticService, MessageStatisticService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Message.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<IDiscountStatisticService, DiscountStatisticService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.OcelotUrl}/{value.Discount.Path}/");
-        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-        services.AddHttpClient<IUserStatisticService, UserStatisticService>(opt =>
-        {
-            opt.BaseAddress = new Uri($"{value.IdentityServerUrl}/");
         }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
     }
 }
