@@ -1,4 +1,7 @@
 ﻿<div class="container-fluid">
+
+    @await Component.InvokeAsync("CultureCurrencyComponentPartial")
+
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
             <a href="" class="text-decoration-none">
@@ -9,7 +12,7 @@
         <div class="col-lg-4 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Aranacak ürünü giriniz">
+                    <input type="text" class="form-control" placeholder="@localizer.GetKey("Aranacak ürünü giriniz", typeof(TopbarResources))">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search"></i>
@@ -18,9 +21,11 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-4 col-6 text-right">
-            <p class="m-0">Telefon Numaramız</p>
+        <div class="col-lg-4 col-4 text-right">
+            <p class="m-0">@localizer.GetKey("Müşteri Hizmetleri", typeof(TopbarResources))</p>
             <h5 class="m-0">+90 987 654 3210</h5>
+        </div>
+        <div class="col-lg-3 col-4 text-right">
         </div>
     </div>
 </div>

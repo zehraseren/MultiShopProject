@@ -18,35 +18,49 @@
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
     <!-- Main Style Css -->
     <link rel="stylesheet" href="~/colorlib-regform-30/css/style.css" />
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/online-shop-website-template/css/style.css" rel="stylesheet">
 </head>
 
 <body class="form-v4">
+    <div class="container-fluid">
+        <div class="row bg-secondary py-1 px-xl-5">
+            <div class="col-lg-12 text-center text-lg-right">
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="btn-group">
+                        @await Html.PartialAsync("_SetLanguagePartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="page-content">
-        <div class="form-v4-content">
+        <div class="form-v4-content" style="margin-top: 49px">
             <div class="form-left">
-                <h2>MULTISHOP E-TİCARET</h2>
-                <p class="text-1">MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.</p>
-                <p class="text-2"><span>Hesabınıza giriş yapın:</span> Güvenli ödeme seçenekleri ve kişiselleştirilmiş alışveriş deneyimi için e-posta ve şifrenizle giriş yapın.</p>
+                <h2 class="text-white">@localizer.GetKey("MULTISHOP E-TİCARET", typeof(SharedResources))</h2>
+                <p class="text-1">@localizer.GetKey("MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.", typeof(SharedResources))</p>
+                <p class="text-2"><span>@localizer.GetKey("Hesabınıza giriş yapın:", typeof(SharedResources))</span> @localizer.GetKey("Güvenli ödeme seçenekleri ve kişiselleştirilmiş alışveriş deneyimi için e-posta ve şifrenizle giriş yapın.", typeof(SharedResources))</p>
                 <div class="form-left-last">
-                    <a href="/Register/Index/" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;" class="account">Kayıt Ol</a>
+                    <a href="/Register/Index/" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;" class="account">@localizer.GetKey("Kayıt Ol", typeof(SharedResources))</a>
                 </div>
             </div>
             <form class="form-detail" method="post">
-                <h2>MultiShop Giriş Sayfası</h2>
+                <h2>@localizer.GetKey("MultiShop Giriş Sayfası", typeof(SharedResources))</h2>
                 <div class="form-row">
-                    <label for="your_username">Kullanıcı Adı</label>
+                    <label for="your_username">@localizer.GetKey("Kullanıcı Adı", typeof(SharedResources))</label>
                     <input type="text" id="your_username" class="input-text" required asp-for="Username">
                 </div>
                 <div class="form-row">
-                    <label for="password">Şifreniz</label>
+                    <label for="password">@localizer.GetKey("Şifreniz", typeof(SharedResources))</label>
                     <input type="password" id="password" class="input-text" required asp-for="Password">
                 </div>
                 <div class="form-row-last">
-                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">Giriş Yap</button>
+                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Giriş Yap", typeof(SharedResources))</button>
                 </div>
             </form>
         </div>
     </div>
+    @await Component.InvokeAsync("_ScriptUILayoutComponentPartial")
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>

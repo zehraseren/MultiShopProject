@@ -34,6 +34,14 @@ public class ProductListController : Controller
         return View();
     }
 
+    public IActionResult ProductList()
+    {
+        ViewBag.directory1 = "Ana Sayfa";
+        ViewBag.directory2 = "Ürün Listesi";
+
+        return View();
+    }
+
     [HttpGet]
     public PartialViewResult AddComment()
     {

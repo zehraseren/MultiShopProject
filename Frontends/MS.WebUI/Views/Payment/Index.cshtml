@@ -22,14 +22,14 @@
                 <div class="card-number-box">################</div>
                 <div class="flexbox">
                     <div class="box">
-                        <span>KART SAHİBİ</span>
-                        <div class="card-holder-name">ad soyad</div>
+                        <span>@localizer.GetKey("KART SAHİBİ", typeof(SharedResources))</span>
+                        <div class="card-holder-name">@localizer.GetKey("ad soyad", typeof(SharedResources))</div>
                     </div>
                     <div class="box">
-                        <span>SON GEÇERLİLİK TARİHİ</span>
+                        <span>@localizer.GetKey("SON GEÇERLİLİK TARİHİ", typeof(SharedResources))</span>
                         <div class="expiration">
-                            <span class="exp-month">MM</span>
-                            <span class="exp-year">YY</span>
+                            <span class="exp-month">@localizer.GetKey("MM", typeof(SharedResources))</span>
+                            <span class="exp-year">@localizer.GetKey("YY", typeof(SharedResources))</span>
                         </div>
                     </div>
                 </div>
@@ -45,18 +45,18 @@
         </div>
         <form action="">
             <div class="inputBox">
-                <span>KART NUMARASI</span>
+                <span>@localizer.GetKey("KART NUMARASI", typeof(SharedResources))</span>
                 <input type="text" maxlength="16" class="card-number-input" />
             </div>
             <div class="inputBox">
-                <span>KART SAHİBİ</span>
+                <span>@localizer.GetKey("KART SAHİBİ", typeof(SharedResources))</span>
                 <input type="text" class="card-holder-box" />
             </div>
             <div class="flexbox">
                 <div class="inputBox">
-                    <span>AY</span>
+                    <span>@localizer.GetKey("AY", typeof(SharedResources))</span>
                     <select name="" id="" class="month-input">
-                        <option value="month" selected disabled>AY</option>
+                        <option value="month" selected disabled>@localizer.GetKey("AY", typeof(SharedResources))</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -72,9 +72,9 @@
                     </select>
                 </div>
                 <div class="inputBox">
-                    <span>YIL</span>
+                    <span>@localizer.GetKey("YIL", typeof(SharedResources))</span>
                     <select name="" id="" class="month-input">
-                        <option value="year" selected disabled>YIL</option>
+                        <option value="year" selected disabled>@localizer.GetKey("YIL", typeof(SharedResources))</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
                         <option value="2027">2027</option>
@@ -93,7 +93,7 @@
                     <input type="text" maxlength="4" class="cvv-input" />
                 </div>
             </div>
-            <input type="submit" value="ÖDEMEYİ TAMAMLA" class="submit-btn" />
+            <input type="submit" value="@localizer.GetKey("ÖDEMEYİ TAMAMLA", typeof(SharedResources))" class="submit-btn" />
         </form>
     </div>
 

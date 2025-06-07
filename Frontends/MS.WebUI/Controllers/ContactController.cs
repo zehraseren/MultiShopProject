@@ -20,12 +20,12 @@ public class ContactController : Controller
         ViewBag.v3 = "Mesaj Gönder";
     }
 
-    [HttpGet]
     public IActionResult Index()
     {
         ContactViewbagList();
         return View();
     }
+
 
     [HttpPost]
     public async Task<IActionResult> Index(CreateContactDto ccdto)

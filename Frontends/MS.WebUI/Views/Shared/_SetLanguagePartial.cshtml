@@ -1,0 +1,49 @@
+﻿@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IOptions<RequestLocalizationOptions> _locOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var currentCulture = requestCulture?.RequestCulture.Culture.Name ?? "tr";
+
+    // İkon dosyaları için kültür kodlarını bayraklarla eşliyoruz
+    var cultureWithFlags = new Dictionary<string, string>
+    {
+        { "tr", "tr.png" },
+        { "en", "us.png" },
+        { "de", "de.png" },
+        { "fr", "fr.png" },
+        { "it", "it.png" }
+    };
+
+    // Mevcut kültürün sadece 'tr', 'en' gibi kısa kodunu alıyoruz
+    var shortCulture = currentCulture.Split('-')[0];
+    var flagPath = cultureWithFlags.TryGetValue(shortCulture, out var flag)
+        ? Url.Content($"~/images/flags/{flag}")
+        : Url.Content("~/images/flags/default.gif");
+
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+<form asp-controller="Culture" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post" class="dropdown">
+    <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-toggle="dropdown">
+        <img src="@flagPath" class="rounded-circle" style="width: 18px;" /> @shortCulture.ToUpper()
+    </button>
+
+    <ul class="dropdown-menu">
+        @foreach (var culture in _locOptions.Value.SupportedCultures)
+        {
+            var shortCode = culture.Name.Split('-')[0];
+            var flag = cultureWithFlags.TryGetValue(shortCode, out var f) ? f : "default.gif";
+            var flagUrl = Url.Content($"~/images/flags/{flag}");
+
+            <li>
+                <button class="dropdown-item fw-bold small" name="culture" value="@culture.Name" type="submit">
+                    <img src="@flagUrl" class="rounded-circle me-1" style="width: 18px;" />
+                    <span class="align-middle"> @shortCode.ToUpper() </span>
+                </button>
+            </li>
+        }
+    </ul>
+</form>

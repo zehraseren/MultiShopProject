@@ -1,7 +1,7 @@
 ﻿@model List<ResultCategoryDto>
 
 <div class="container-fluid pt-5">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">ÖNE ÇIKAN KATEGORİLER</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">@localizer.GetKey("ÖNE ÇIKAN KATEGORİLER", typeof(SharedResources))</span></h2>
     <div class="row px-xl-5 pb-3">
         @foreach (var item in Model)
         {

@@ -1,7 +1,7 @@
 ﻿@model List<ResultProductDto>
 
 <div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Öne Çıkan Ürünler</span></h2>
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">@localizer.GetKey("Öne Çıkan Ürünler", typeof(SharedResources))</span></h2>
     <div class="row px-xl-5">
         @foreach (var item in Model)
         {

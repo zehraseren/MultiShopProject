@@ -1,0 +1,25 @@
+﻿<div class="row bg-secondary py-1 px-xl-5">
+    <div class="col-lg-12 text-center text-lg-right">
+        <div class="d-flex align-items-center justify-content-end">
+            <div class="btn-group">
+                <div class="d-flex align-items-center mr-2" style="gap: 6px;">
+                    <img src="~/images/exchanges/dollar.png" style="width: 18px;" /><span class="small font-weight-bold text-success"> @ViewBag.usdBuy ₺</span> / <span class="small font-weight-bold text-danger mr-2">@ViewBag.usdSell ₺</span>
+                    <img src="~/images/exchanges/euro.png" style="width: 18px;" /><span class="small font-weight-bold text-success"> @ViewBag.eurBuy ₺</span> / <span class="small font-weight-bold text-danger">@ViewBag.eurSell ₺</span>
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle mr-2" data-toggle="dropdown">
+                        @localizer.GetKey("Hesabım", typeof(TopbarResources))
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button">@localizer.GetKey("Giriş Yap", typeof(SharedResources))</button>
+                        <button class="dropdown-item" type="button">@localizer.GetKey("Kayıt Ol", typeof(SharedResources))</button>
+                    </div>
+                }
+
+                @await Html.PartialAsync("_SetLanguagePartial")
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,14 +4,19 @@
     <div class="row px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Kategoriler</h6>
+                <h6 class="text-dark m-0">
+                    <i class="fa fa-bars mr-2"></i>
+                    @localizer.GetKey("Kategoriler", typeof(NavbarResources))
+                </h6>
                 <i class="fa fa-angle-down text-dark"></i>
             </a>
             <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                 <div class="navbar-nav w-100">
                     @foreach (var item in Model)
                     {
-                        <a href="/ProductList/Index/@item.CategoryId" class="nav-item nav-link">@item.CategoryName</a>
+                        <a href="/ProductList/Index/@item.CategoryId" class="nav-item nav-link">
+                            @localizer.GetKey(item.CategoryName, typeof(CategoryResources))
+                        </a>
                     }
                 </div>
             </nav>
@@ -27,19 +32,43 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="/Default/Index/" class="nav-item nav-link">Ana Sayfa</a>
-                        <a href="/ProductList/Index/" class="nav-item nav-link">Ürünler</a>
-                        <a href="detail.html" class="nav-item nav-link">Ürün Detayları</a>
+                        <a asp-controller="Default" asp-action="Index" class="nav-item nav-link">
+                            @localizer.GetKey("Ana Sayfa", typeof(NavbarResources))
+                        </a>
+                        <a asp-controller="ProductList" asp-action="ProductList" class="nav-item nav-link">
+                            @localizer.GetKey("Ürünler", typeof(NavbarResources))
+                        </a>
+                        <a asp-controller="ProductList" asp-action="ProductDetail" class="nav-item nav-link">
+                            @localizer.GetKey("Ürün Detayları", typeof(NavbarResources))
+                        </a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sayfalar <i class="fa fa-angle-down mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                @localizer.GetKey("Sayfalar", typeof(NavbarResources)) <i class="fa fa-angle-down mt-1"></i>
+                            </a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                <a href="/Basket/Index/" class="dropdown-item">Sepetim</a>
-                                <a href="checkout.html" class="dropdown-item">Ödeme</a>
-                                <a href="/Register/Index/" class="dropdown-item">Kayıt Ol</a>
-                                <a href="/Login/Index/" class="dropdown-item">Giriş Yap</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="ShoppingCart" asp-action="Index" class="dropdown-item">
+                                        @localizer.GetKey("Sepetim", typeof(NavbarResources))
+                                    </a>
+                                    <a asp-controller="Payment" asp-action="Index" class="dropdown-item">
+                                        @localizer.GetKey("Ödeme", typeof(NavbarResources))
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="Register" asp-action="Index" class="dropdown-item">
+                                        @localizer.GetKey("Kayıt Ol", typeof(SharedResources))
+                                    </a>
+                                    <a asp-controller="Login" asp-action="Index" class="dropdown-item">
+                                        @localizer.GetKey("Giriş Yap", typeof(SharedResources))
+                                    </a>
+                                }
                             </div>
                         </div>
-                        <a href="/Contact/Index/" class="nav-item nav-link active">İletişim</a>
+                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link active">
+                            @localizer.GetKey("İletişim", typeof(NavbarResources))
+                        </a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">

@@ -8,6 +8,7 @@ using MS.WebUI.Services.CommentServices;
 using MS.WebUI.Services.MessageServices;
 using MS.WebUI.Services.DiscountServices;
 using MS.WebUI.Services.UserIdentityServices;
+using MS.WebUI.Services.LocalizationServices;
 using MS.WebUI.Services.CatalogServices.BrandServices;
 using MS.WebUI.Services.CatalogServices.AboutServices;
 using MS.WebUI.Services.CatalogServices.ProductServices;
@@ -38,6 +39,7 @@ public static class Extentions
         services.AddHttpClient<IIdentityService, IdentityService>();
         services.AddScoped<ResourceOwnerPasswordTokenHandler>();
         services.AddScoped<ClientCredentialTokenHandler>();
+        services.AddScoped<LocalizationService>();
         services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
         // Add Settings Configurations
