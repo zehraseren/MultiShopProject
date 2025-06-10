@@ -138,4 +138,19 @@
   <data name="Ürün Detayları" xml:space="preserve">
     <value>Produktdetails</value>
   </data>
+  <data name="MultiShop" xml:space="preserve">
+    <value>MultiShop</value>
+  </data>
+  <data name="Ana Sayfa" xml:space="preserve">
+    <value>Startseite</value>
+  </data>
+  <data name="İletişim" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Ürünler" xml:space="preserve">
+    <value>Produkte</value>
+  </data>
+  <data name="Sepetim" xml:space="preserve">
+    <value>Mein Warenkorb</value>
+  </data>
 </root>

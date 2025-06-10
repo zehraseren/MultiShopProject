@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
 
 namespace MS.WebUI.Services.LocalizationServices;
 
@@ -14,8 +13,8 @@ public class LocalizationService
 
     public LocalizedString GetKey(string key, Type resourceType)
     {
-        var assemblyName = new AssemblyName(resourceType.GetTypeInfo().Assembly.FullName);
-        var localizer = _stringLocalizerFactory.Create(resourceType.Name, assemblyName.Name);
+        var assemblyName = resourceType.Assembly.GetName().Name;
+        var localizer = _stringLocalizerFactory.Create(resourceType.Name, assemblyName);
         return localizer[key];
     }
 }

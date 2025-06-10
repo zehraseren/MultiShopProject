@@ -1,11 +1,11 @@
 ﻿<div class="col-md-6">
-    <h4 class="mb-4">Bir Yorum Ekle</h4>
-    <small>E-posta adresiniz yayınlanmayacaktır. Zorunlu alanlar * ile işaretlenmiştir</small>
+    <h4 class="mb-4">@localizer.GetKey("Bir Yorum Ekle", typeof(CommentResources))</h4>
+    <small>@localizer.GetKey("E-posta adresiniz yayınlanmayacaktır.", typeof(CommentResources)) @localizer.GetKey("Zorunlu alanlar * ile işaretlenmiştir.", typeof(CommentResources))</small>
 
     <form id="commentForm">
         <div class="form-group">
             <div class="d-flex my-3">
-                <p class="mb-0 mr-2">Puanınız * :</p>
+                <p class="mb-0 mr-2">@localizer.GetKey("Puanınız", typeof(CommentResources)) * :</p>
                 <div class="text-primary" id="ratingStars">
                     <i class="far fa-star star" data-index="1"></i>
                     <i class="far fa-star star" data-index="2"></i>
@@ -19,19 +19,19 @@
         <input type="hidden" name="ProductId" value="@ViewBag.pid" />
 
         <div class="form-group">
-            <label for="name">Adınız Soyadınız *</label>
+            <label for="name">@localizer.GetKey("Adınız Soyadınız", typeof(CommentResources)) *</label>
             <input type="text" class="form-control" id="name" name="NameSurname">
         </div>
         <div class="form-group">
-            <label for="email">Email Adresiniz *</label>
+            <label for="email">@localizer.GetKey("Email Adresiniz", typeof(CommentResources)) *</label>
             <input type="email" class="form-control" id="email" name="Email">
         </div>
         <div class="form-group">
-            <label for="message">Mesajınız *</label>
+            <label for="message">@localizer.GetKey("Mesajınız", typeof(CommentResources)) *</label>
             <textarea id="message" cols="30" rows="5" class="form-control" name="CommentDetail"></textarea>
         </div>
         <div class="form-group mb-0">
-            <input type="submit" value="Yorum Yap" class="btn btn-primary px-3">
+            <input type="submit" value="@localizer.GetKey("Yorum Yap", typeof(CommentResources))" class="btn btn-primary px-3">
         </div>
     </form>
 </div>
@@ -75,15 +75,15 @@
             body: formData
         }).then(response => {
             if (!response.ok) {
-                throw new Error('Yorum eklenirken bir hata oluştu');
+                throw new Error('@localizer.GetKey("Yorum eklenirken bir hata oluştu.", typeof(CommentResources))');
             }
             return response.json();
         }).then(data => {
             if(data === true) {
-                alert('Yorumunuz başarıyla eklendi.');
+                alert('@localizer.GetKey("Yorumunuz başarıyla eklendi.", typeof(CommentResources))');
                 location.reload();
             } else {
-                alert('Yorum eklenirken bir hata oluştu.');
+                alert('@localizer.GetKey("Yorum eklenirken bir hata oluştu.", typeof(CommentResources))');
             };
         }).catch(error => {
             console.error('Error', error);

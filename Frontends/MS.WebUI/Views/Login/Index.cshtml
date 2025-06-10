@@ -37,25 +37,25 @@
     <div class="page-content">
         <div class="form-v4-content" style="margin-top: 49px">
             <div class="form-left">
-                <h2 class="text-white">@localizer.GetKey("MULTISHOP E-TİCARET", typeof(SharedResources))</h2>
-                <p class="text-1">@localizer.GetKey("MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.", typeof(SharedResources))</p>
-                <p class="text-2"><span>@localizer.GetKey("Hesabınıza giriş yapın:", typeof(SharedResources))</span> @localizer.GetKey("Güvenli ödeme seçenekleri ve kişiselleştirilmiş alışveriş deneyimi için e-posta ve şifrenizle giriş yapın.", typeof(SharedResources))</p>
+                <h2 class="text-white">@localizer.GetKey("MULTISHOP E-TİCARET", typeof(LoginResources))</h2>
+                <p class="text-1">@localizer.GetKey("MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.", typeof(LoginResources))</p>
+                <p class="text-2"><span>@localizer.GetKey("Henüz hesabınız yok mu?", typeof(LoginResources))</span> @localizer.GetKey("Hemen kayıt olun ve binlerce ürüne özel fırsatlarla erişim sağlayın!", typeof(LoginResources))</p>
                 <div class="form-left-last">
-                    <a href="/Register/Index/" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;" class="account">@localizer.GetKey("Kayıt Ol", typeof(SharedResources))</a>
+                    <a href="/Register/Index/" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;" class="account">@localizer.GetKey("Kayıt Ol", typeof(LoginResources))</a>
                 </div>
             </div>
             <form class="form-detail" method="post">
-                <h2>@localizer.GetKey("MultiShop Giriş Sayfası", typeof(SharedResources))</h2>
+                <h2>@localizer.GetKey("MultiShop Giriş Sayfası", typeof(LoginResources))</h2>
                 <div class="form-row">
-                    <label for="your_username">@localizer.GetKey("Kullanıcı Adı", typeof(SharedResources))</label>
+                    <label for="your_username">@localizer.GetKey("Kullanıcı Adı", typeof(LoginResources))</label>
                     <input type="text" id="your_username" class="input-text" required asp-for="Username">
                 </div>
                 <div class="form-row">
-                    <label for="password">@localizer.GetKey("Şifreniz", typeof(SharedResources))</label>
+                    <label for="password">@localizer.GetKey("Şifre", typeof(LoginResources))</label>
                     <input type="password" id="password" class="input-text" required asp-for="Password">
                 </div>
                 <div class="form-row-last">
-                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Giriş Yap", typeof(SharedResources))</button>
+                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Giriş Yap", typeof(LoginResources))</button>
                 </div>
             </form>
         </div>

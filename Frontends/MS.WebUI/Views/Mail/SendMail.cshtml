@@ -10,18 +10,18 @@
     <br />
     <br />
     <div class="alert alert-success">
-        <h3>Mail Gönderme Sayfası</h3>
+        <h3>@localizer.GetKey("Mail Gönderme Sayfası", typeof(SharedResources))</h3>
     </div>
     <form method="post">
-        <label>Alıcı Mail Adresi</label>
+        <label>@localizer.GetKey("Alıcı Mail Adresi", typeof(SharedResources))</label>
         <input type="text" asp-for="ReceiverMail" class="form-control" />
         <br />
-        <label>Mail Konusu</label>
+        <label>@localizer.GetKey("Mail Konusu", typeof(SharedResources))</label>
         <input type="text" asp-for="Subject" class="form-control" />
         <br />
-        <label>Mail İçeriği</label>
+        <label>@localizer.GetKey("Mail İçeriği", typeof(SharedResources))</label>
         <textarea rows="5" asp-for="MailContent" class="form-control"></textarea>
         <br />
-        <button class="btn btn-outline-primary">Gönder</button>
+        <button class="btn btn-outline-primary">@localizer.GetKey("Gönder", typeof(SharedResources))</button>
     </form>
 </div>

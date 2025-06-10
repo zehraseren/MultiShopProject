@@ -7,7 +7,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="@item.Icon"></h1>
-                    <h5 class="font-weight-semi-bold m-0">@item.Title</h5>
+                    <h5 class="font-weight-semi-bold m-0">@localizer.GetKey(item.Title, typeof(FeatureResources))</h5>
                 </div>
             </div>
         }

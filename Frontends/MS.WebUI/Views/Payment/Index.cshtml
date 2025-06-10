@@ -3,14 +3,6 @@
     Layout = "~/Views/UILayout/_IULayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="~/css/style.css">
-</head>
 <body>
     <div class="container">
         <div class="card-container">
@@ -22,14 +14,14 @@
                 <div class="card-number-box">################</div>
                 <div class="flexbox">
                     <div class="box">
-                        <span>@localizer.GetKey("KART SAHİBİ", typeof(SharedResources))</span>
-                        <div class="card-holder-name">@localizer.GetKey("ad soyad", typeof(SharedResources))</div>
+                        <span>@localizer.GetKey("KART SAHİBİ", typeof(PaymentResources))</span>
+                        <div class="card-holder-name">@localizer.GetKey("ad soyad", typeof(PaymentResources))</div>
                     </div>
                     <div class="box">
-                        <span>@localizer.GetKey("SON GEÇERLİLİK TARİHİ", typeof(SharedResources))</span>
+                        <span>@localizer.GetKey("SON GEÇERLİLİK TARİHİ", typeof(PaymentResources))</span>
                         <div class="expiration">
-                            <span class="exp-month">@localizer.GetKey("MM", typeof(SharedResources))</span>
-                            <span class="exp-year">@localizer.GetKey("YY", typeof(SharedResources))</span>
+                            <span class="exp-month">MM /</span>
+                            <span class="exp-year">YY</span>
                         </div>
                     </div>
                 </div>
@@ -45,18 +37,18 @@
         </div>
         <form action="">
             <div class="inputBox">
-                <span>@localizer.GetKey("KART NUMARASI", typeof(SharedResources))</span>
+                <span>@localizer.GetKey("KART NUMARASI", typeof(PaymentResources))</span>
                 <input type="text" maxlength="16" class="card-number-input" />
             </div>
             <div class="inputBox">
-                <span>@localizer.GetKey("KART SAHİBİ", typeof(SharedResources))</span>
+                <span>@localizer.GetKey("KART SAHİBİ", typeof(PaymentResources))</span>
                 <input type="text" class="card-holder-box" />
             </div>
             <div class="flexbox">
                 <div class="inputBox">
-                    <span>@localizer.GetKey("AY", typeof(SharedResources))</span>
+                    <span>@localizer.GetKey("AY", typeof(PaymentResources))</span>
                     <select name="" id="" class="month-input">
-                        <option value="month" selected disabled>@localizer.GetKey("AY", typeof(SharedResources))</option>
+                        <option value="MM" selected disabled>@localizer.GetKey("AY", typeof(PaymentResources))</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -72,9 +64,9 @@
                     </select>
                 </div>
                 <div class="inputBox">
-                    <span>@localizer.GetKey("YIL", typeof(SharedResources))</span>
+                    <span>@localizer.GetKey("YIL", typeof(PaymentResources))</span>
                     <select name="" id="" class="month-input">
-                        <option value="year" selected disabled>@localizer.GetKey("YIL", typeof(SharedResources))</option>
+                        <option value="YY" selected disabled>@localizer.GetKey("YIL", typeof(PaymentResources))</option>
                         <option value="2025">2025</option>
                         <option value="2026">2026</option>
                         <option value="2027">2027</option>
@@ -93,7 +85,7 @@
                     <input type="text" maxlength="4" class="cvv-input" />
                 </div>
             </div>
-            <input type="submit" value="@localizer.GetKey("ÖDEMEYİ TAMAMLA", typeof(SharedResources))" class="submit-btn" />
+            <input type="submit" value="@localizer.GetKey("ÖDEMEYİ TAMAMLA", typeof(PaymentResources))" class="submit-btn" />
         </form>
     </div>
 

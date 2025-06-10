@@ -4,17 +4,17 @@
     <table class="table table-light table-borderless table-hover text-center mb-0">
         <thead class="thead-dark">
             <tr>
-                <th>Ürün</th>
-                <th>Fiyat</th>
-                <th>Miktar</th>
-                <th>Toplam</th>
-                <th>Kaldır</th>
+                <th>@localizer.GetKey("Ürün", typeof(ShoppingResources))</th>
+                <th>@localizer.GetKey("Fiyat", typeof(ShoppingResources))</th>
+                <th>@localizer.GetKey("Miktar", typeof(ShoppingResources))</th>
+                <th>@localizer.GetKey("Toplam", typeof(ShoppingResources))</th>
+                <th>@localizer.GetKey("Kaldır", typeof(ShoppingResources))</th>
             </tr>
         </thead>
         <tbody class="align-middle">
             @if (!Model.Any())
             {
-                <tr>Sepetiniz boş.</tr>
+                <tr>@localizer.GetKey("Sepetiniz boş.", typeof(ShoppingResources))</tr>
             }
             else
             {

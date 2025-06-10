@@ -15,17 +15,17 @@ public class ContactController : Controller
 
     void ContactViewbagList()
     {
-        ViewBag.v1 = "MultiShop";
-        ViewBag.v2 = "İletişim";
-        ViewBag.v3 = "Mesaj Gönder";
+        ViewBag.directory1 = "MultiShop";
+        ViewBag.directory2 = "İletişim";
+        ViewBag.directory3 = "Mesaj Gönder";
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
         ContactViewbagList();
         return View();
     }
-
 
     [HttpPost]
     public async Task<IActionResult> Index(CreateContactDto ccdto)

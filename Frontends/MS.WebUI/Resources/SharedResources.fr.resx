@@ -117,116 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ad Soyad" xml:space="preserve">
-    <value>Nom Prénom</value>
-  </data>
-  <data name="AY" xml:space="preserve">
-    <value>MOIS</value>
-  </data>
-  <data name="Email Adresi" xml:space="preserve">
-    <value>Adresse e-mail</value>
-  </data>
-  <data name="Giriş Yap" xml:space="preserve">
-    <value>Se connecter</value>
-  </data>
-  <data name="KART SAHİBİ" xml:space="preserve">
-    <value>TITULAIRE DE LA CARTE</value>
-  </data>
-  <data name="KART NUMARASI" xml:space="preserve">
-    <value>NUMÉRO DE CARTE</value>
-  </data>
-  <data name="Kayıt Ol" xml:space="preserve">
-    <value>S'inscrire</value>
-  </data>
-  <data name="Konu" xml:space="preserve">
-    <value>Sujet</value>
-  </data>
-  <data name="Lütfen boş geçmeyiniz" xml:space="preserve">
-    <value>Veuillez ne pas laisser vide</value>
-  </data>
-  <data name="Mesaj" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="SON GEÇERLİLİK TARİHİ" xml:space="preserve">
-    <value>DATE D'EXPIRATION</value>
-  </data>
-  <data name="YIL" xml:space="preserve">
-    <value>ANNÉE</value>
-  </data>
-  <data name="YY" xml:space="preserve">
-    <value>AA</value>
-  </data>
-  <data name="ÖDEMEYİ TAMAMLA" xml:space="preserve">
-    <value>TERMINER LE PAIEMENT</value>
-  </data>
-  <data name="Mesajı Gönder" xml:space="preserve">
-    <value>Envoyer un message</value>
-  </data>
-  <data name="MultiShop Giriş Sayfası" xml:space="preserve">
-    <value>Page de connexion MultiShop</value>
-  </data>
-  <data name="Kullanıcı Adı" xml:space="preserve">
-    <value>Nom d'utilisateur</value>
-  </data>
-  <data name="Şifre" xml:space="preserve">
-    <value>Mot de passe</value>
-  </data>
-  <data name="MULTISHOP E-TİCARET" xml:space="preserve">
-    <value>MULTISHOP E-commerce</value>
-  </data>
-  <data name="Hesabınıza giriş yapın:" xml:space="preserve">
-    <value>Connectez-vous à votre compte :</value>
-  </data>
-  <data name="Güvenli ödeme seçenekleri ve kişiselleştirilmiş alışveriş deneyimi için e-posta ve şifrenizle giriş yapın." xml:space="preserve">
-    <value>utilisez votre e-mail et votre mot de passe pour accéder à des options de paiement sécurisées et à une expérience d’achat personnalisée.</value>
-  </data>
-  <data name="MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz." xml:space="preserve">
-    <value>Bienvenue sur MULTISHOP ! Connectez-vous à l’adresse d’achat la plus rapide et la plus sécurisée pour accéder instantanément à des milliers de produits.</value>
-  </data>
-  <data name="Şifreler uyuşmuyor." xml:space="preserve">
-    <value>Les mots de passe ne correspondent pas.</value>
-  </data>
-  <data name="Lütfen şifrenizi tekrar giriniz." xml:space="preserve">
-    <value>Veuillez confirmer votre mot de passe.</value>
-  </data>
-  <data name="Henüz hesabınız yok mu?" xml:space="preserve">
-    <value>Vous n’avez pas encore de compte ?</value>
-  </data>
-  <data name="Hemen kayıt olun ve binlerce ürüne özel fırsatlarla erişim sağlayın!" xml:space="preserve">
-    <value>Inscrivez-vous maintenant et accédez à des milliers de produits avec des offres spéciales !</value>
-  </data>
-  <data name="MultiShop Kayıt Formu" xml:space="preserve">
-    <value>Formulaire d'inscription MultiShop</value>
-  </data>
-  <data name="Ad" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
-  <data name="Soyad" xml:space="preserve">
-    <value>Nom de famille</value>
-  </data>
-  <data name="Şifre Tekrar" xml:space="preserve">
-    <value>Confirmer le mot de passe</value>
-  </data>
-  <data name="Lütfen adınızı giriniz." xml:space="preserve">
-    <value>Veuillez entrer votre prénom.</value>
-  </data>
-  <data name="Lütfen soyadınızı giriniz." xml:space="preserve">
-    <value>Veuillez entrer votre nom de famille.</value>
-  </data>
-  <data name="Lütfen email adresinizi giriniz." xml:space="preserve">
-    <value>Veuillez entrer votre adresse e-mail.</value>
-  </data>
-  <data name="Lütfen şifrenizi giriniz." xml:space="preserve">
-    <value>Veuillez entrer votre mot de passe.</value>
-  </data>
   <data name="Yorumlar" xml:space="preserve">
     <value>Avis</value>
   </data>
   <data name="Ürün Bilgileri" xml:space="preserve">
     <value>Informations sur le produit</value>
-  </data>
-  <data name="Ürün Detayı" xml:space="preserve">
-    <value>Détail du produit</value>
   </data>
   <data name="Alışverişe Başla" xml:space="preserve">
     <value>Commencer les achats</value>
@@ -237,71 +132,8 @@
   <data name="Öne Çıkan Ürünler" xml:space="preserve">
     <value>Produits en vedette</value>
   </data>
-  <data name="Ürünlerimiz" xml:space="preserve">
-    <value>Nos produits</value>
-  </data>
-  <data name="Siparişlerim" xml:space="preserve">
-    <value>Mes commandes</value>
-  </data>
-  <data name="Bize Yazın" xml:space="preserve">
-    <value>Écrivez-nous</value>
-  </data>
-  <data name="Sepet Detayları" xml:space="preserve">
-    <value>Détails du panier</value>
-  </data>
-  <data name="Geçmiş Siparişlerim" xml:space="preserve">
-    <value>Mes commandes précédentes</value>
-  </data>
-  <data name="Profilim" xml:space="preserve">
-    <value>Mon compte</value>
-  </data>
-  <data name="En son indirimler ve kampanyalar için hemen abone olun!" xml:space="preserve">
-    <value>Abonnez-vous pour les dernières réductions et offres !</value>
-  </data>
-  <data name="Abone Ol!" xml:space="preserve">
-    <value>S’abonner !</value>
-  </data>
-  <data name="BİZİ TAKİP EDİN" xml:space="preserve">
-    <value>Suivez-nous</value>
-  </data>
-  <data name="HAKKIMIZDA" xml:space="preserve">
-    <value>À propos de nous</value>
-  </data>
-  <data name="HIZLI ALIŞVERİŞ" xml:space="preserve">
-    <value>Achat rapide</value>
-  </data>
-  <data name="Günün Fırsatı" xml:space="preserve">
-    <value>Offre du jour</value>
-  </data>
-  <data name="İndirimlerim" xml:space="preserve">
-    <value>Mes réductions</value>
-  </data>
   <data name="İndirimler" xml:space="preserve">
     <value>Réductions</value>
-  </data>
-  <data name="MAİL BÜLTENİ" xml:space="preserve">
-    <value>Bulletin d’information</value>
-  </data>
-  <data name="Tüm Hakları Saklıdır." xml:space="preserve">
-    <value>Tous droits réservés.</value>
-  </data>
-  <data name="Designed by" xml:space="preserve">
-    <value>Conçu par</value>
-  </data>
-  <data name="ÖDEME YÖNTEMİNİ SEÇİNİZ" xml:space="preserve">
-    <value>Sélectionnez le mode de paiement</value>
-  </data>
-  <data name="Ödemeye Geç" xml:space="preserve">
-    <value>Procéder au paiement</value>
-  </data>
-  <data name="Puan Kullan" xml:space="preserve">
-    <value>Utiliser des points</value>
-  </data>
-  <data name="Havale/Eft" xml:space="preserve">
-    <value>Virement bancaire</value>
-  </data>
-  <data name="Kredi/Banka Kartı" xml:space="preserve">
-    <value>Carte de crédit / débit</value>
   </data>
   <data name="Genel Toplam" xml:space="preserve">
     <value>Montant total</value>
@@ -315,28 +147,22 @@
   <data name="Sipariş Listesi" xml:space="preserve">
     <value>Liste de commande</value>
   </data>
-  <data name="Renge Göre Filtrele" xml:space="preserve">
-    <value>Filtrer par couleur</value>
+  <data name="Mail İçeriği" xml:space="preserve">
+    <value>Message</value>
   </data>
-  <data name="Tüm Renkler" xml:space="preserve">
-    <value>Toutes les couleurs</value>
+  <data name="Gönder" xml:space="preserve">
+    <value>Envoyer</value>
   </data>
-  <data name="Siyah" xml:space="preserve">
-    <value>Noir</value>
+  <data name="Mail Konusu" xml:space="preserve">
+    <value>Sujet</value>
   </data>
-  <data name="Beyaz" xml:space="preserve">
-    <value>Blanc</value>
+  <data name="Mail Gönderme Sayfası" xml:space="preserve">
+    <value>Envoyer un mail</value>
   </data>
-  <data name="Kırmızı" xml:space="preserve">
-    <value>Rouge</value>
+  <data name="Mesajı Gönder" xml:space="preserve">
+    <value>Envoyer un message</value>
   </data>
-  <data name="Mavi" xml:space="preserve">
-    <value>Bleu</value>
-  </data>
-  <data name="Yeşil" xml:space="preserve">
-    <value>Vert</value>
-  </data>
-  <data name="Yorum" xml:space="preserve">
-    <value>Avis </value>
+  <data name="Profilim" xml:space="preserve">
+    <value>Mon compte</value>
   </data>
 </root>

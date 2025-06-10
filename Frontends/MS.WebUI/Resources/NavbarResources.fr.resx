@@ -129,8 +129,11 @@
   <data name="Sepetim" xml:space="preserve">
     <value>Mon Panier</value>
   </data>
-  <data name="Ürün Detayları" xml:space="preserve">
-    <value>Détails du prodit</value>
+  <data name="Siparişlerim" xml:space="preserve">
+    <value>Mes commandes</value>
+  </data>
+  <data name="Ödeme" xml:space="preserve">
+    <value>Paiement</value>
   </data>
   <data name="Ürünler" xml:space="preserve">
     <value>Produits</value>

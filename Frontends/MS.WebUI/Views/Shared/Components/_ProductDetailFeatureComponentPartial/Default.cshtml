@@ -11,12 +11,16 @@
                 <small class="fas fa-star-half-alt"></small>
                 <small class="far fa-star"></small>
             </div>
-            <small class="pt-1">(0 değerlendirme)</small>
+            <small class="pt-1">
+                (0 @localizer.GetKey("Değerlendirme", typeof(ProductDetailResources)))
+            </small>
         </div>
         <h3 class="font-weight-semi-bold mb-4">@Model.ProductPrice.ToString("C") ₺</h3>
         <p class="mb-4">@Model.ProductDescription</p>
         <div class="d-flex mb-3">
-            <strong class="text-dark mr-3">Ebatlar:</strong>
+            <strong class="text-dark mr-3">
+                @localizer.GetKey("Ebatlar", typeof(ProductDetailResources)):
+            </strong>
             <form>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="size-1" name="size">
@@ -49,31 +53,45 @@
             </form>
         </div>
         <div class="d-flex mb-4">
-            <strong class="text-dark mr-3">Renkler:</strong>
+            <strong class="text-dark mr-3">
+                @localizer.GetKey("Renkler", typeof(ProductDetailResources)):
+            </strong>
             <form>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-1" name="color">
-                    <label class="custom-control-label" for="color-1">Siyah</label>
+                    <label class="custom-control-label" for="color-1">
+                        @localizer.GetKey("Siyah", typeof(ProductDetailResources))
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-2" name="color">
-                    <label class="custom-control-label" for="color-2">Beyaz</label>
+                    <label class="custom-control-label" for="color-2">
+                        @localizer.GetKey("Beyaz", typeof(ProductDetailResources))
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-3" name="color">
-                    <label class="custom-control-label" for="color-3">Kırmızı</label>
+                    <label class="custom-control-label" for="color-3">
+                        @localizer.GetKey("Kırmızı", typeof(ProductDetailResources))
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-4" name="color">
-                    <label class="custom-control-label" for="color-4">Mavi</label>
+                    <label class="custom-control-label" for="color-4">
+                        @localizer.GetKey("Mavi", typeof(ProductDetailResources))
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-5" name="color">
-                    <label class="custom-control-label" for="color-5">Yeşil</label>
+                    <label class="custom-control-label" for="color-5">
+                        @localizer.GetKey("Yeşil", typeof(ProductDetailResources))
+                    </label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" class="custom-control-input" id="color-6" name="color">
-                    <label class="custom-control-label" for="color-6">Pembe</label>
+                    <label class="custom-control-label" for="color-6">
+                        @localizer.GetKey("Pembe", typeof(ProductDetailResources))
+                    </label>
                 </div>
             </form>
         </div>
@@ -92,7 +110,7 @@
                 </div>
             </div>
             <button class="btn btn-primary px-3">
-                <i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle
+                <i class="fa fa-shopping-cart mr-1"></i> @localizer.GetKey("Sepete Ekle", typeof(ProductDetailResources))
             </button>
         </div>
         <div class="d-flex pt-2">

@@ -8,12 +8,12 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle mr-2" data-toggle="dropdown">
+                    <a href="#" type="button" class="btn btn-sm btn-light dropdown-toggle mr-2" data-toggle="dropdown">
                         @localizer.GetKey("Hesabım", typeof(TopbarResources))
-                    </button>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">@localizer.GetKey("Giriş Yap", typeof(SharedResources))</button>
-                        <button class="dropdown-item" type="button">@localizer.GetKey("Kayıt Ol", typeof(SharedResources))</button>
+                        <a asp-controller="Login" asp-action="Index" class="dropdown-item" type="button">@localizer.GetKey("Giriş Yap", typeof(LoginResources))</a>
+                        <a asp-controller="Register" asp-action="Index" class="dropdown-item" type="button">@localizer.GetKey("Kayıt Ol", typeof(RegisterResources))</a>
                     </div>
                 }
 

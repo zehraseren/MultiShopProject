@@ -37,7 +37,7 @@ public class ProductListController : Controller
     public IActionResult ProductList()
     {
         ViewBag.directory1 = "Ana Sayfa";
-        ViewBag.directory2 = "Ürün Listesi";
+        ViewBag.directory3 = "Ürün Listesi";
 
         return View();
     }

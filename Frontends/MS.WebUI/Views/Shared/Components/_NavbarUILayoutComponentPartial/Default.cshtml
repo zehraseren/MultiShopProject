@@ -38,8 +38,8 @@
                         <a asp-controller="ProductList" asp-action="ProductList" class="nav-item nav-link">
                             @localizer.GetKey("Ürünler", typeof(NavbarResources))
                         </a>
-                        <a asp-controller="ProductList" asp-action="ProductDetail" class="nav-item nav-link">
-                            @localizer.GetKey("Ürün Detayları", typeof(NavbarResources))
+                        <a asp-area="User" asp-controller="MyOrder" asp-action="MyOrderList" class="nav-item nav-link">
+                            @localizer.GetKey("Siparişlerim", typeof(NavbarResources))
                         </a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -58,10 +58,10 @@
                                 else
                                 {
                                     <a asp-controller="Register" asp-action="Index" class="dropdown-item">
-                                        @localizer.GetKey("Kayıt Ol", typeof(SharedResources))
+                                        @localizer.GetKey("Kayıt Ol", typeof(RegisterResources))
                                     </a>
                                     <a asp-controller="Login" asp-action="Index" class="dropdown-item">
-                                        @localizer.GetKey("Giriş Yap", typeof(SharedResources))
+                                        @localizer.GetKey("Giriş Yap", typeof(LoginResources))
                                     </a>
                                 }
                             </div>

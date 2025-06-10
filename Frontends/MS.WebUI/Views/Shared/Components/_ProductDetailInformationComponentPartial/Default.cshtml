@@ -1,7 +1,7 @@
 ﻿@model GetByIdProductDetailDto
 
 <div class="tab-pane fade" id="tab-pane-2">
-    <h4 class="mb-3">@localizer.GetKey("Ürün Bilgileri", typeof(SharedResources))</h4>
+    <h4 class="mb-3">@localizer.GetKey("Ürün Bilgileri", typeof(ProductDetailResources))</h4>
     @foreach (var sentence in Model.ProductInfo.Split(new[] { Environment.NewLine }, StringSplitOptions.None))
     {
         <p>• @sentence</p>

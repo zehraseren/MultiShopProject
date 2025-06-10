@@ -5,7 +5,7 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("HAKKIMIZDA", typeof(SharedResources))</h5>
+                <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("HAKKIMIZDA", typeof(FooterResources))</h5>
                 <p class="mb-4">@item.Description</p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>@item.Address</p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@item.Email</p>
@@ -15,38 +15,38 @@
         <div class="col-lg-8 col-md-12">
             <div class="row">
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("HIZLI ALIŞVERİŞ", typeof(SharedResources))</h5>
+                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("HIZLI ALIŞVERİŞ", typeof(FooterResources))</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Ana Sayfa", typeof(NavbarResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Ürünlerimiz", typeof(SharedResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Günün Fırsatı", typeof(SharedResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("İndirimler", typeof(SharedResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Ürünlerimiz", typeof(FooterResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Günün Fırsatı", typeof(FooterResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("İndirimler", typeof(FooterResources))</a>
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Sepetim", typeof(NavbarResources))</a>
-                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Bize Yazın", typeof(SharedResources))</a>
+                        <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Bize Yazın", typeof(FooterResources))</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("Profilim", typeof(SharedResources))</h5>
+                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("PROFİLİM", typeof(FooterResources))</h5>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Siparişlerim", typeof(SharedResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Sepet Detayları", typeof(SharedResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Geçmiş Ürünlerim", typeof(SharedResources))</a>
-                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("İndirimlerim", typeof(SharedResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Siparişlerim", typeof(FooterResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Sepet Detayları", typeof(FooterResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("Geçmiş Ürünlerim", typeof(FooterResources))</a>
+                        <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("İndirimlerim", typeof(FooterResources))</a>
                         <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>@localizer.GetKey("İletişim", typeof(NavbarResources))</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("MAİL BÜLTENİ", typeof(SharedResources))</h5>
-                    <p>@localizer.GetKey("En son indirimler ve kampanyalar için hemen abone olun!", typeof(SharedResources))</p>
+                    <h5 class="text-secondary text-uppercase mb-4">@localizer.GetKey("MAİL BÜLTENİ", typeof(FooterResources))</h5>
+                    <p>@localizer.GetKey("En son indirimler ve kampanyalar için hemen abone olun!", typeof(FooterResources))</p>
                     <form action="">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="@localizer.GetKey("Email Adresi", typeof(SharedResources))">
+                            <input type="text" class="form-control" placeholder="@localizer.GetKey("Email Adresi", typeof(FooterResources))">
                             <div class="input-group-append">
-                                <button class="btn btn-primary">@localizer.GetKey("Abone Ol!", typeof(SharedResources))</button>
+                                <button class="btn btn-primary">@localizer.GetKey("Abone Ol!", typeof(FooterResources))</button>
                             </div>
                         </div>
                     </form>
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3">@localizer.GetKey("BİZİ TAKİP EDİN", typeof(SharedResources))</h6>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3">@localizer.GetKey("BİZİ TAKİP EDİN", typeof(FooterResources))</h6>
                     <div class="d-flex">
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -60,7 +60,7 @@
     <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="col-md-6 px-xl-0">
             <p class="mb-md-0 text-center text-md-left text-secondary">
-                &copy; <a class="text-primary" href="#"></a> @localizer.GetKey("Tüm Hakları Saklıdır.", typeof(SharedResources)) @localizer.GetKey("Designed by", typeof(SharedResources))
+                &copy; <a class="text-primary" href="#"></a> @localizer.GetKey("Tüm Hakları Saklıdır.", typeof(FooterResources)) @localizer.GetKey("Designed by", typeof(FooterResources))
                 <a class="text-primary" href="https://github.com/zehraseren">Zehra Şeren</a>
             </p>
         </div>

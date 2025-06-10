@@ -37,45 +37,45 @@
     <div class="page-content">
         <div class="form-v4-content" style="margin-top: 49px">
             <div class="form-left">
-                <h2 class="text-white">@localizer.GetKey("MULTISHOP E-TİCARET", typeof(SharedResources))</h2>
-                <p class="text-1">@localizer.GetKey("MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.", typeof(SharedResources))</p>
-                <p class="text-2"><span>@localizer.GetKey("Henüz hesabınız yok mu?", typeof(SharedResources))</span> @localizer.GetKey("Hemen kayıt olun ve binlerce ürüne özel fırsatlarla erişim sağlayın!", typeof(SharedResources))</p>
+                <h2 class="text-white">@localizer.GetKey("MULTISHOP E-TİCARET", typeof(RegisterResources))</h2>
+                <p class="text-1">@localizer.GetKey("MULTISHOP’a hoş geldiniz! Alışverişin en hızlı ve güvenli adresine giriş yaparak binlerce ürüne anında ulaşabilirsiniz.", typeof(RegisterResources))</p>
+                <p class="text-2"><span>@localizer.GetKey("Hesabınıza giriş yapın:", typeof(RegisterResources))</span> @localizer.GetKey("Güvenli ödeme seçenekleri ve kişiselleştirilmiş alışveriş deneyimi için e-posta ve şifrenizle giriş yapın.", typeof(RegisterResources))</p>
                 <div class="form-left-last">
-                    <a href="/Login/Index/" class="account" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Giriş Yap", typeof(SharedResources))</a>
+                    <a href="/Login/Index/" class="account" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Giriş Yap", typeof(RegisterResources))</a>
                 </div>
             </div>
             <form class="form-detail" method="post">
-                <h2>MultiShop Kayıt Formu</h2>
+                <h2>@localizer.GetKey("MultiShop Kayıt Formu", typeof(RegisterResources))</h2>
                 <div class="form-group">
-                    <div class="form-row form-row-1">
-                        <label for="first_name">@localizer.GetKey("Ad", typeof(SharedResources))</label>
+                    <div class="form-row form-row-1 mr-1">
+                        <label for="first_name">@localizer.GetKey("Ad", typeof(RegisterResources))</label>
                         <input type="text" id="first_name" class="input-text" asp-for="Name">
                     </div>
                     <div class="form-row form-row-1">
-                        <label for="last_name">@localizer.GetKey("Soyad", typeof(SharedResources))</label>
+                        <label for="last_name">@localizer.GetKey("Soyad", typeof(RegisterResources))</label>
                         <input type="text" id="last_name" class="input-text" asp-for="Surname">
                     </div>
                 </div>
                 <div class="form-row">
-                    <label for="your_email">@localizer.GetKey("Email Adresi", typeof(SharedResources))</label>
+                    <label for="your_email">@localizer.GetKey("Email Adresi", typeof(RegisterResources))</label>
                     <input type="text" id="your_email" class="input-text" required pattern="[^]+[^]+.[a-zA-Z]{2,6}" asp-for="Email">
                 </div>
                 <div class="form-row">
-                    <label for="your_username">@localizer.GetKey("Kullanıcı Adı", typeof(SharedResources))</label>
+                    <label for="your_username">@localizer.GetKey("Kullanıcı Adı", typeof(RegisterResources))</label>
                     <input type="text" id="your_username" class="input-text" required asp-for="Username">
                 </div>
                 <div class="form-group">
-                    <div class="form-row form-row-1 ">
-                        <label for="password">@localizer.GetKey("Şifreniz", typeof(SharedResources))</label>
+                    <div class="form-row form-row-1 mr-1">
+                        <label for="password">@localizer.GetKey("Şifre", typeof(RegisterResources))</label>
                         <input type="password" id="password" class="input-text" required asp-for="Password">
                     </div>
                     <div class="form-row form-row-1">
-                        <label for="comfirm-password">@localizer.GetKey("Şifre Tekrar", typeof(SharedResources))</label>
+                        <label for="comfirm-password">@localizer.GetKey("Şifre Tekrar", typeof(RegisterResources))</label>
                         <input type="password" id="comfirm_password" class="input-text" required asp-for="ConfirmPassword">
                     </div>
                 </div>
                 <div class="form-row-last">
-                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Kayıt Ol", typeof(SharedResources))</button>
+                    <button class="register" style="height: 35px; line-height: 35px; display: inline-block; text-align: center; padding: 0 15px; text-decoration: none; border-radius: 5px;">@localizer.GetKey("Kayıt Ol", typeof(RegisterResources))</button>
                 </div>
             </form>
         </div>
@@ -100,20 +100,20 @@
             },
             messages: {
                 first_name: {
-                    required: "@localizer.GetKey("Lütfen adınızı giriniz.", typeof(SharedResources))"
+                    required: "@localizer.GetKey("Lütfen adınızı giriniz.", typeof(RegisterResources))"
                 },
                 last_name: {
-                    required: "@localizer.GetKey("Lütfen soyadınızı giriniz.", typeof(SharedResources))"
+                    required: "@localizer.GetKey("Lütfen soyadınızı giriniz.", typeof(RegisterResources))"
                 },
                 your_email: {
-                    required: "@localizer.GetKey("Lütfen email adresinizi giriniz.", typeof(SharedResources))"
+                    required: "@localizer.GetKey("Lütfen email adresinizi giriniz.", typeof(RegisterResources))"
                 },
                 password: {
-                    required: "@localizer.GetKey("Lütfen şifrenizi giriniz.", typeof(SharedResources))"
+                    required: "@localizer.GetKey("Lütfen şifrenizi giriniz.", typeof(RegisterResources))"
                 },
                 comfirm_password: {
-                    required: "@localizer.GetKey("Lütfen şifrenizi tekrar giriniz.", typeof(SharedResources))",
-                    equalTo: "@localizer.GetKey("Şifreler uyuşmuyor.", typeof(SharedResources))"
+                    required: "@localizer.GetKey("Lütfen şifrenizi tekrar giriniz.", typeof(RegisterResources))",
+                    equalTo: "@localizer.GetKey("Şifreler uyuşmuyor.", typeof(RegisterResources))"
                 }
             }
         });

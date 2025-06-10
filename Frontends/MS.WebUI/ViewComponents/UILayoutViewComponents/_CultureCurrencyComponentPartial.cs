@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MS.WebUI.ViewComponents.UILayoutViewComponents;
 
-public class CultureCurrencyComponentPartial : ViewComponent
+public class _CultureCurrencyComponentPartial : ViewComponent
 {
     public async Task<IViewComponentResult> InvokeAsync()
     {
